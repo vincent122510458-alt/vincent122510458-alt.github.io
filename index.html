@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>陳君澤 作品集</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2313233d'/%3E%3Cpath d='M17 16h9l6 22 6-22h9L36 48h-8z' fill='%23a9c9f0'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* 單一深色世界：深海軍藍底、冰藍點綴；標題用襯線體，內文用黑體。版面：左對齊的雜誌式編排，作品用大小不一的拼貼格 */
+  --bg: #0d131d;
+  --surface: #151d2a;
+  --line: rgba(200, 220, 245, 0.13);
+  --ink: #e9f0f8;
+  --muted: #8f9eb3;
+  --accent: #a9c9f0;
+  --navy: #13233d;
+  --font-serif: "Noto Serif TC", "Songti TC", serif;
+  --font-latin: "Jost", "Noto Sans TC", system-ui, sans-serif;
+  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --gutter: clamp(20px, 5vw, 72px);
+  --max: 1240px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-weight: 400; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, h4, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.pre { white-space: pre-line; }
+.wrap { max-width: var(--max); margin: 0 auto; }
+.latin { font-family: var(--font-latin); letter-spacing: .22em; text-transform: uppercase; font-size: 12px; font-weight: 500; }
+.grain { position: relative; }
+.grain::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- 導覽列 ---------- */
+.nav { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; padding: 14px var(--gutter); background: rgba(13, 19, 29, .78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav .mark { font-family: var(--font-latin); font-weight: 500; letter-spacing: .24em; font-size: 13px; text-decoration: none; }
+.nav ul { display: flex; gap: clamp(14px, 2.6vw, 36px); list-style: none; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; font-size: 14px; color: var(--muted); letter-spacing: .08em; transition: color .2s; }
+.nav ul a:hover { color: var(--ink); }
+
+/* ---------- 封面 ---------- */
+.hero { min-height: min(84vh, 760px); display: grid; grid-template-rows: 1fr auto; overflow: hidden; isolation: isolate; color: var(--navy); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hero-main { align-self: center; padding: clamp(56px, 8vw, 96px) var(--gutter) 40px; max-width: calc(var(--max) + 2 * var(--gutter)); width: 100%; margin: 0 auto; display: grid; gap: 22px; }
+.hero-roles { display: flex; gap: 10px; align-items: center; color: rgba(19, 35, 61, .75); }
+.hero-roles i { width: 28px; height: 1px; background: currentColor; }
+.hero-name { font-family: var(--font-serif); font-weight: 900; font-size: clamp(56px, 11vw, 148px); line-height: 1; letter-spacing: .04em; }
+.hero-intro { font-size: clamp(16px, 1.6vw, 19px); max-width: 30em; color: rgba(19, 35, 61, .85); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 26px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px; letter-spacing: .06em; transition: transform .2s, background .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.solid { background: var(--navy); color: #eef4fb; }
+.btn.ghost { border: 1px solid rgba(19, 35, 61, .45); color: var(--navy); }
+.hero-foot { display: flex; justify-content: space-between; padding: 16px var(--gutter) 22px; color: rgba(225, 236, 250, .82); }
+
+/* ---------- 理念與數字 ---------- */
+.statement { padding: clamp(64px, 9vw, 112px) var(--gutter); border-bottom: 1px solid var(--line); }
+.statement .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
+.sp-wrap { display: grid; gap: 14px; }
+.statement-photo { position: relative; aspect-ratio: 3 / 2; border-radius: 12px; overflow: hidden; background: var(--surface); }
+.statement-photo.has-img { background: transparent; border-radius: 0; overflow: visible; }
+.sp-frame {
+  position: absolute; inset: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent), linear-gradient(to bottom, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent), linear-gradient(to bottom, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+  mask-composite: intersect;
+}
+.sp-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; user-select: none; }
+.adj-fill { position: absolute; inset: 0; overflow: hidden; }
+body.editing .adj, #wEdit .adj { cursor: grab; touch-action: none; outline: 1px dashed rgba(169, 201, 240, .5); outline-offset: -1px; }
+body.editing .adj.dragging, #wEdit .adj.dragging { cursor: grabbing; }
+.art > img, .dlg-art > img, .adj > img { will-change: transform; }
+.sp-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 13px; color: var(--muted); }
+.sp-ctrl input[type="range"] { width: 120px; accent-color: var(--accent); }
+.sp-hint { flex-basis: 100%; font-size: 12px; }
+.we-ctrl:not(:empty) { padding: 14px clamp(20px, 4vw, 40px) 0; }
+.statement .wrap:not(:has(.sp-wrap)) { grid-template-columns: 1fr; }
+.statement-text { font-family: var(--font-serif); font-weight: 700; font-size: clamp(26px, 3.4vw, 42px); line-height: 1.45; letter-spacing: .02em; }
+.statement-text::before { content: "“"; display: block; color: var(--accent); font-size: 1.6em; line-height: .6; margin-bottom: 8px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 28px 20px; }
+.stat { border-top: 1px solid var(--line); padding-top: 14px; }
+.stat-num { white-space: nowrap; font-family: var(--font-latin); font-weight: 300; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 14px; color: var(--muted); }
+.stat { position: relative; border-top-color: transparent; }
+.stat::before { content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 100%; background: var(--line); transform-origin: left; }
+.stat::after { content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; }
+.stat.play::after { animation: statLine 1.4s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms) forwards; }
+.stat.play .stat-label { animation: statUp .8s ease var(--d, 0ms) both; }
+@keyframes statLine { 0% { transform: scaleX(0); opacity: 1; } 70% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: .35; } }
+@keyframes statUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- 區塊標題 ---------- */
+section.block { padding: clamp(72px, 10vw, 128px) var(--gutter); }
+.head-row { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+.sec-title { display: grid; gap: 4px; }
+.sec-title .latin { color: var(--accent); }
+.sec-title h2 { font-family: var(--font-serif); font-weight: 700; font-size: clamp(32px, 4.4vw, 52px); letter-spacing: .04em; line-height: 1.2; }
+
+/* ---------- 作品 ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 6px; padding: 5px; border: 1px solid var(--line); border-radius: 999px; }
+.filters button, .filters .fchip { font: inherit; font-size: 14px; letter-spacing: .06em; padding: 7px 18px; border-radius: 999px; border: 0; background: transparent; color: var(--muted); cursor: pointer; transition: all .2s; }
+.filters button:hover { color: var(--ink); }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--navy); }
+.works { display: grid; gap: 56px; }
+.works-main { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.works-rest-title { color: var(--muted); padding-top: 28px; border-top: 1px solid var(--line); margin-bottom: -28px; }
+.works-rest { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 28px 20px; }
+.work-cell.main h3 { font-family: var(--font-serif); font-size: clamp(19px, 1.7vw, 23px); line-height: 1.45; }
+.work-cell.main .art { border-radius: 10px; box-shadow: 0 18px 40px rgba(0, 0, 0, .35); }
+.works-rest .work h3 { font-size: 16px; }
+.works-rest .work .sub { font-size: 13px; }
+.excerpt { font-size: 14px; color: #b3c0d1; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.work-cell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.work { all: unset; cursor: pointer; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.work:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 8px; }
+.work .art { aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; position: relative; background: var(--surface); }
+.work .art > :first-child { transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.work:hover .art > :first-child { transform: scale(1.04); }
+.work .meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); }
+.work h3 { font-weight: 700; font-size: 18px; letter-spacing: .03em; line-height: 1.4; }
+.work .sub { font-size: 14px; color: var(--muted); }
+.plat { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 4px 12px; border-radius: 999px; background: rgba(13, 19, 29, .78); color: var(--ink); font-family: var(--font-latin); font-size: 12px; font-weight: 500; letter-spacing: .08em; backdrop-filter: blur(6px); }
+.art > img, .dlg-art > img, .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.art-empty { background: repeating-linear-gradient(135deg, #182233 0 12px, #141c2a 12px 24px); display: grid; place-items: center; color: var(--muted); font-size: 14px; letter-spacing: .1em; }
+
+/* 範例示意圖（換上真實作品圖後不會顯示） */
+.art-ui1 { background: linear-gradient(135deg, #c9dcf2, #6f93c4); }
+.art-ui1 .phone { position: absolute; width: 22%; aspect-ratio: 9/19; border-radius: 14px; background: #f5f9fd; box-shadow: 0 16px 30px rgba(10, 20, 40, .3); top: 12%; padding: 8px; display: grid; gap: 6px; align-content: start; }
+.art-ui1 .phone:nth-child(1) { left: 26%; transform: rotate(-6deg); }
+.art-ui1 .phone:nth-child(2) { left: 52%; top: 18%; transform: rotate(5deg); }
+.phone i { display: block; height: 10px; border-radius: 3px; background: #dbe6f3; }
+.phone i.big { height: 46px; background: linear-gradient(135deg, #8fb3e0, #2f4f80); }
+.phone i.half { width: 60%; }
+.art-ui2 { background: #1d2a40; }
+.art-ui2 .win { position: absolute; inset: 14% 12% 0; background: #eef3f9; border-radius: 8px 8px 0 0; display: grid; grid-template-columns: 22% 1fr; overflow: hidden; }
+.art-ui2 .win .side { background: #d6e1ee; }
+.art-ui2 .win .main { padding: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-content: start; }
+.art-ui2 .win .main i { height: 34px; border-radius: 4px; background: #cfdcec; }
+.art-ui2 .win .main i:first-child { grid-column: span 3; height: 48px; background: linear-gradient(90deg, #8fb3e0, #2f4f80); }
+.art-poster { background: #dfe8f2; display: grid; place-items: center; }
+.art-poster .sheet { height: 78%; aspect-ratio: 3/4.2; background: #13233d; color: #eef4fb; padding: 10px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 16px 30px rgba(10, 20, 40, .3); position: relative; overflow: hidden; }
+.art-poster .sheet::before { content: ""; position: absolute; width: 130%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #f2f7fd 0%, #8fb3e0 40%, transparent 70%); top: -20%; left: -15%; }
+.art-poster b { position: relative; font-family: var(--font-latin); font-weight: 500; font-size: clamp(14px, 2vw, 24px); line-height: .95; }
+.art-poster small { position: relative; font-size: 9px; letter-spacing: .2em; opacity: .7; color: var(--navy); }
+.art-book { background: linear-gradient(160deg, #2a3d5c, #111a28); }
+.art-book .cover { position: absolute; height: 72%; aspect-ratio: 3/4.3; top: 14%; border-radius: 2px 4px 4px 2px; box-shadow: 0 16px 30px rgba(0, 0, 0, .45); }
+.art-book .cover:nth-child(1) { left: 28%; background: #eef3f9; }
+.art-book .cover:nth-child(1)::after { content: "四季"; position: absolute; left: 14%; top: 12%; writing-mode: vertical-rl; font-family: var(--font-serif); font-weight: 900; font-size: clamp(12px, 1.8vw, 20px); color: var(--navy); letter-spacing: .2em; }
+.art-book .cover:nth-child(2) { left: 50%; top: 22%; background: linear-gradient(180deg, #a9c9f0, #2f4f80); }
+.art-brand { background: #eef3f9; display: grid; place-items: center; }
+.art-brand .logo { display: flex; align-items: center; gap: 12px; color: var(--navy); }
+.art-brand .logo span:first-child { width: 44px; height: 44px; border-radius: 50% 50% 50% 4px; background: linear-gradient(135deg, #a9c9f0, #2f4f80); }
+.art-brand .logo span:last-child { font-family: var(--font-latin); font-weight: 500; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: .06em; }
+.art-brand .swatches { position: absolute; bottom: 12%; display: flex; gap: 6px; }
+.art-brand .swatches i { width: 20px; height: 20px; border-radius: 50%; }
+.art-pack { background: linear-gradient(135deg, #6f93c4 0%, #1d2f4d 100%); }
+.art-pack .can { position: absolute; height: 62%; aspect-ratio: 1/2; bottom: 10%; border-radius: 10px; box-shadow: 0 16px 30px rgba(0, 0, 0, .3); }
+.art-pack .can:nth-child(1) { left: 30%; background: linear-gradient(180deg, #eef3f9 0 18%, #a9c9f0 18% 100%); }
+.art-pack .can:nth-child(2) { left: 45%; bottom: 16%; background: linear-gradient(180deg, #eef3f9 0 18%, #13233d 18% 100%); }
+.art-pack .can:nth-child(3) { left: 60%; background: linear-gradient(180deg, #eef3f9 0 18%, #dbe8f6 18% 100%); }
+
+/* ---------- 關於我 ---------- */
+.about { background: linear-gradient(180deg, var(--bg), #111a27 50%, var(--bg)); }
+.about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(36px, 6vw, 96px); align-items: start; }
+.about-side { display: grid; gap: 28px; position: sticky; top: 90px; }
+.photo { position: relative; aspect-ratio: 4 / 5; border-radius: 10px; overflow: hidden; background: var(--surface); }
+.side-label { color: var(--muted); margin-bottom: 12px; }
+.skills { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill { min-width: 46px; height: 46px; padding: 0 10px; border-radius: 10px; display: grid; place-items: center; font-family: var(--font-latin); font-weight: 500; font-size: 18px; border: 1px solid currentColor; }
+.services { display: flex; flex-wrap: wrap; gap: 8px; }
+.services span { padding: 5px 14px; border-radius: 999px; background: rgba(169, 201, 240, .1); color: var(--accent); font-size: 14px; }
+.bio-lead { font-family: var(--font-serif); font-weight: 700; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.55; margin-bottom: 18px; }
+.bio { color: #c4cfdd; font-size: 16px; max-width: 36em; }
+.list-title { display: flex; align-items: baseline; gap: 14px; margin: 56px 0 6px; }
+.list-title h3 { font-family: var(--font-serif); font-weight: 700; font-size: 22px; letter-spacing: .06em; }
+.rows { border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.row .yr { font-family: var(--font-latin); color: var(--accent); font-size: 14px; letter-spacing: .06em; padding-top: 2px; font-variant-numeric: tabular-nums; }
+.row h4 { font-weight: 700; font-size: 17px; letter-spacing: .03em; }
+.row ul { margin: 6px 0 0; padding-left: 1.1em; color: var(--muted); font-size: 14px; }
+.num-hl { color: var(--accent); font-weight: 700; }
+.hl-title { color: var(--accent); margin: 22px 0 12px; }
+.hl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.hl {
+  position: relative; overflow: hidden; padding: 16px 16px 14px; border-radius: 12px;
+  background: linear-gradient(160deg, rgba(169, 201, 240, .12), rgba(169, 201, 240, .03));
+  border: 1px solid rgba(169, 201, 240, .18);
+}
+.hl::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, #d6e7fb, #5d86bf); transform: scaleY(0); transform-origin: top; }
+.hl-num { font-family: var(--font-latin); font-weight: 500; font-size: clamp(28px, 2.8vw, 36px); line-height: 1.1; color: #d6e7fb; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.hl-label { font-size: 13px; color: var(--ink); margin-top: 6px; line-height: 1.5; }
+.hl-note { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+.hl.play { animation: hlIn .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms) both; }
+.hl.play::before { animation: hlBar .9s cubic-bezier(.2, .7, .2, 1) calc(var(--d, 0ms) + 200ms) forwards; }
+@keyframes hlIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes hlBar { to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .hl::before { transform: none; } }
+
+/* ---------- 聯絡 ---------- */
+.contact { position: relative; overflow: hidden; isolation: isolate; }
+.contact::before { content: ""; position: absolute; inset: auto -10% -70% 30%; height: 130%; background: radial-gradient(45% 50% at 50% 50%, rgba(169, 201, 240, .28), transparent 70%); filter: blur(30px); z-index: -1; }
+.contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 96px); align-items: end; }
+.contact h2 { font-family: var(--font-serif); font-weight: 900; font-size: clamp(40px, 6.4vw, 84px); line-height: 1.15; letter-spacing: .04em; }
+.contact-text { color: var(--muted); margin-top: 18px; max-width: 26em; }
+.links { border-top: 1px solid var(--line); }
+.link-row { display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 16px; padding: 18px 4px; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding .25s, background .25s; }
+a.link-row:hover { padding-left: 14px; background: rgba(169, 201, 240, .05); }
+.link-row b { font-family: var(--font-latin); font-weight: 500; letter-spacing: .2em; font-size: 12px; color: var(--muted); }
+.link-row span { font-size: 17px; }
+.link-row .arr { color: var(--accent); font-size: 18px; }
+footer { padding: 28px var(--gutter); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; font-family: var(--font-latin); font-size: 12px; letter-spacing: .2em; color: var(--muted); }
+
+/* ---------- 作品詳情 ---------- */
+dialog { width: min(920px, calc(100% - 32px)); max-height: calc(100% - 48px); padding: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); }
+dialog::backdrop { background: rgba(5, 9, 15, .78); backdrop-filter: blur(4px); }
+.dlg-art { aspect-ratio: 16 / 9; position: relative; overflow: hidden; }
+.dlg-body { padding: 28px clamp(20px, 4vw, 40px) 36px; display: grid; grid-template-columns: 1fr 220px; gap: 32px; }
+.dlg-body h3 { font-family: var(--font-serif); font-weight: 700; font-size: 28px; letter-spacing: .03em; margin-bottom: 12px; }
+#dlgDesc { color: #c4cfdd; margin-bottom: 18px; }
+.dlg-body dl { margin: 0; font-size: 14px; display: grid; gap: 14px; align-content: start; }
+.dlg-body dt { font-family: var(--font-latin); font-size: 11px; letter-spacing: .24em; color: var(--muted); text-transform: uppercase; }
+.dlg-body dd { margin: 2px 0 0; }
+.dlg-close { position: absolute; top: 14px; right: 14px; z-index: 3; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(13, 19, 29, .75); color: var(--ink); font-size: 20px; cursor: pointer; }
+.watch { display: inline-flex; align-items: center; padding: 11px 24px; border-radius: 999px; background: var(--accent); color: var(--navy); text-decoration: none; font-weight: 700; letter-spacing: .06em; font-size: 15px; transition: transform .2s; }
+.watch:hover { transform: translateY(-2px); }
+.watch.alt { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.watch.alt:hover { border-color: var(--accent); }
+.watch-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.plat em { font-style: normal; color: var(--accent); }
+.year-range { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; }
+.yr-pick { display: grid; gap: 6px; align-content: start; }
+.yr-pick select, .year-range select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg); border: 1px solid rgba(169, 201, 240, .45); border-radius: 6px; padding: 5px 8px; width: 100%; cursor: pointer; }
+.field .check-inline input { width: auto; margin: 0; accent-color: var(--accent); }
+.field { align-content: start; }
+.field .check-inline { justify-self: start; display: inline-flex; align-items: center; gap: 6px; color: var(--ink); font-size: 13px; cursor: pointer; margin-top: 4px; }
+.we-links { display: grid; gap: 8px; }
+.we-link.we-video { grid-template-columns: auto 1.2fr 1.4fr auto auto; }
+.we-num { font-family: var(--font-latin); color: var(--accent); font-size: 13px; }
+.dlg-sub { color: var(--accent); margin: 22px 0 10px; }
+.dlg-sub[hidden] { display: none; }
+.video-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.video-list a { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 14px; padding: 14px 6px; border-bottom: 1px solid var(--line); text-decoration: none; transition: background .2s, padding .2s; }
+.video-list a:hover { background: rgba(169, 201, 240, .07); padding-left: 12px; }
+.v-num { font-family: var(--font-latin); color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.v-title { font-weight: 500; line-height: 1.5; }
+.v-plat { font-size: 12px; color: var(--muted); white-space: nowrap; display: flex; align-items: center; gap: 12px; }
+.v-views { font-weight: 500; color: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
+.we-views { max-width: 100px; }
+.v-go { color: var(--accent); }
+.dlg-side { display: grid; gap: 8px; align-content: start; }
+.dlg-side .dlg-sub { margin-top: 18px; }
+#dlgLinksWrap[hidden] { display: none; }
+.client-links { display: grid; gap: 8px; }
+.client-link { display: flex; align-items: center; gap: 8px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; font-size: 13px; line-height: 1.4; transition: border-color .2s; }
+.client-link:hover { border-color: var(--accent); }
+.client-link span { color: var(--accent); }
+.client-link em { margin-left: auto; font-style: normal; color: var(--accent); }
+@media (max-width: 640px) { .we-link.we-video { grid-template-columns: auto 1fr auto; } .we-video input[data-k="url"] { grid-column: 2; } .video-list a { grid-template-columns: auto 1fr auto; } .v-plat { display: none; } }
+.we-link { display: grid; grid-template-columns: 1.6fr 1fr auto auto; gap: 8px; align-items: center; }
+.we-link input { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px; width: 100%; min-width: 0; }
+.we-plat { font-size: 12px; color: var(--accent); min-width: 4.5em; }
+@media (max-width: 640px) { .we-link { grid-template-columns: 1fr auto; } .we-link input[data-k="label"] { grid-column: 1; } }
+
+/* ---------- 編輯工具 ---------- */
+.edit-fab { position: fixed; right: 20px; bottom: 20px; z-index: 40; padding: 12px 22px; border: 0; border-radius: 999px; cursor: pointer; font: inherit; background: var(--accent); color: var(--navy); font-weight: 700; letter-spacing: .08em; font-size: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, .45); }
+.edit-bar { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 40; width: min(760px, calc(100% - 24px)); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 12px 10px 20px; background: rgba(21, 29, 42, .97); border: 1px solid rgba(169, 201, 240, .45); border-radius: 16px; box-shadow: 0 16px 40px rgba(0, 0, 0, .55); font-size: 14px; }
+.edit-bar .msg { flex: 1; min-width: 180px; color: var(--muted); }
+.edit-bar .msg b { color: var(--accent); }
+.save-state { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.save-state.saved { color: #9fd8b0; }
+.save-state.saving, .save-state.pending { color: var(--accent); }
+.save-state.error { color: #ffa3a3; }
+.edit-bar button { font: inherit; cursor: pointer; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); }
+.edit-bar button.primary { background: var(--ink); color: var(--navy); border-color: var(--ink); font-weight: 700; }
+.edit-bar button:disabled { opacity: .5; cursor: default; }
+body.editing { padding-bottom: 96px; }
+body.editing [data-path] { outline: 1px dashed rgba(169, 201, 240, .6); outline-offset: 3px; border-radius: 3px; cursor: text; min-width: 1.5em; }
+body.editing .hero [data-path] { outline-color: rgba(19, 35, 61, .55); }
+body.editing [data-path]:hover { background: rgba(169, 201, 240, .08); }
+body.editing [data-path]:focus { outline: 2px solid var(--accent); }
+body.editing [data-path]:empty::before { content: "（點此輸入）"; color: var(--muted); }
+body.editing .hero-roles [data-path] { display: inline-block; }
+body.editing .stat [data-path] { display: block; width: max-content; margin-bottom: 4px; }
+.ed-btn { font: inherit; cursor: pointer; border-radius: 999px; padding: 5px 12px; font-size: 12px; letter-spacing: .05em; border: 1px solid rgba(169, 201, 240, .5); background: rgba(13, 19, 29, .85); color: var(--accent); }
+.ed-btn:hover { background: rgba(169, 201, 240, .14); }
+.ed-btn.danger { border-color: rgba(255, 140, 140, .5); color: #ffa3a3; }
+.ed-btn.confirm { background: #c94848; color: #fff; border-color: #c94848; }
+.ed-add { margin-top: 14px; display: block; }
+.ed-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.img-slot { position: absolute; left: 10px; bottom: 10px; z-index: 3; display: flex; gap: 6px; }
+.url-in, .field input, .field select, .field textarea { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px; width: 100%; }
+.skill-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.drag-h { all: unset; cursor: grab; touch-action: none; color: var(--muted); font-size: 14px; line-height: 1; padding: 2px 8px; border-radius: 6px; }
+.drag-h:hover, .drag-h:focus-visible { color: var(--accent); background: rgba(169, 201, 240, .1); }
+.skill-wrap.lifting { opacity: .55; transform: scale(1.06); }
+.skill-wrap { transition: transform .15s; }
+.skill-wrap input[type="color"] { width: 30px; height: 20px; border: 0; padding: 0; background: none; cursor: pointer; }
+.link-edit { padding: 16px 4px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+.link-edit b { font-family: var(--font-latin); letter-spacing: .2em; font-size: 12px; color: var(--muted); }
+.work-new { all: unset; cursor: pointer; aspect-ratio: 16 / 9; border: 1px dashed rgba(169, 201, 240, .6); border-radius: 8px; display: grid; place-items: center; color: var(--accent); letter-spacing: .1em; }
+.work-new:hover { background: rgba(169, 201, 240, .06); }
+#wEdit .dlg-body { grid-template-columns: 1fr 1fr; }
+.field { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.field.full { grid-column: 1 / -1; }
+.field textarea { min-height: 120px; resize: vertical; line-height: 1.7; }
+.field.check { display: flex; align-items: center; gap: 8px; }
+.field.check input { width: auto; }
+.wedit-actions { grid-column: 1 / -1; display: flex; gap: 10px; justify-content: space-between; flex-wrap: wrap; }
+.wedit-actions .right { display: flex; gap: 10px; }
+.wedit-actions button { font: inherit; font-size: 14px; padding: 9px 20px; border-radius: 999px; cursor: pointer; border: 1px solid var(--line); background: transparent; color: var(--ink); }
+.wedit-actions button.primary { background: var(--ink); color: var(--navy); border-color: var(--ink); font-weight: 700; }
+.toast { position: fixed; left: 50%; top: 72px; transform: translateX(-50%); z-index: 50; background: var(--ink); color: var(--navy); padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 700; opacity: 0; pointer-events: none; transition: opacity .25s; }
+.toast.show { opacity: 1; }
+
+/* ---------- 響應式 ---------- */
+@media (max-width: 960px) {
+  .statement .wrap, .about-grid, .contact .wrap { grid-template-columns: 1fr; }
+  .about-side { position: static; grid-template-columns: minmax(0, 260px) 1fr; }
+  .works-main { grid-template-columns: repeat(2, 1fr); }
+  .works-main .work-cell:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .nav ul li.opt { display: none; }
+  .works-main { grid-template-columns: 1fr; }
+  .about-side { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; gap: 4px; }
+  .link-row { grid-template-columns: 1fr auto; }
+  .link-row b { grid-column: 1 / -1; }
+  .dlg-body, #wEdit .dlg-body { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="主選單">
+  <a class="mark" href="#top" id="brand"></a>
+  <ul>
+    <li><a href="#works">作品</a></li>
+    <li class="opt"><a href="#about">關於我</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+</nav>
+
+<header class="hero grain" id="top">
+  <canvas id="glow" aria-hidden="true"></canvas>
+  <div class="hero-main" id="heroMain"></div>
+  <div class="hero-foot latin" id="heroFoot"></div>
+</header>
+
+<section class="statement" id="statement"><div class="wrap" id="statementWrap"></div></section>
+
+<section class="block" id="works">
+  <div class="wrap">
+    <div class="head-row">
+      <div class="sec-title" id="worksTitle"></div>
+      <div class="filters" role="group" aria-label="篩選作品類別" id="filters"></div>
+    </div>
+    <div class="works" id="workList"></div>
+  </div>
+</section>
+
+<section class="block about" id="about">
+  <div class="wrap about-grid">
+    <aside class="about-side" id="aboutSide"></aside>
+    <div id="aboutMain"></div>
+  </div>
+</section>
+
+<section class="block contact" id="contact"><div class="wrap" id="contactWrap"></div></section>
+
+<footer id="footer"></footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <button class="dlg-close" type="button" aria-label="關閉" data-close>×</button>
+  <div class="dlg-art" id="dlgArt"></div>
+  <div class="dlg-body">
+    <div>
+      <h3 id="dlgTitle"></h3>
+      <div id="dlgVideos"></div>
+      <div class="dlg-sub latin" id="dlgDescHead">About the project</div>
+      <div id="dlgDesc" class="pre"></div>
+    </div>
+    <div class="dlg-side">
+      <dl id="dlgMeta"></dl>
+      <div id="dlgLinksWrap"><div class="dlg-sub latin">Client</div><div id="dlgLinks" class="client-links"></div></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="wEdit" aria-labelledby="wEditTitle">
+  <button class="dlg-close" type="button" aria-label="關閉" data-close>×</button>
+  <div class="dlg-art" id="weArt"></div>
+  <div id="weCtrl" class="we-ctrl"></div>
+  <form class="dlg-body" id="weForm">
+    <h3 id="wEditTitle" class="field full" style="color:var(--ink)">編輯作品</h3>
+    <div class="field full">
+      <span>作品圖片（建議 16:9 的影片截圖或封面）</span>
+      <div class="ed-row">
+        <button type="button" class="ed-btn" id="weUpload">上傳圖片</button>
+        <button type="button" class="ed-btn danger" id="weRemoveImg">移除圖片</button>
+        <input type="file" id="weFile" accept="image/*" hidden>
+      </div>
+    </div>
+    <label class="field full" for="weTitle"><span>作品名稱</span><input id="weTitle" required></label>
+    <div class="field full">
+      <span>近期作品參考影片（建議放 3 部，填影片標題和影片網址）</span>
+      <div id="weVideos" class="we-links"></div>
+      <button type="button" class="ed-btn" id="weAddVideo" style="justify-self:start">＋ 新增影片</button>
+    </div>
+    <div class="field full">
+      <span>案主連結（案主的頻道、官網或社群，任何網址都可以，會自動辨識平台）</span>
+      <div id="weLinks" class="we-links"></div>
+      <button type="button" class="ed-btn" id="weAddLink" style="justify-self:start">＋ 新增連結</button>
+    </div>
+    <label class="field" for="weCat"><span>類別</span><select id="weCat"></select></label>
+    <div class="field">
+      <span>年份</span>
+      <div class="year-range">
+        <select id="weYearFrom" aria-label="開始年份"></select>
+        <span aria-hidden="true">—</span>
+        <select id="weYearTo" aria-label="結束年份"></select>
+      </div>
+    </div>
+    <label class="field" for="weRole"><span>負責項目</span><input id="weRole"></label>
+    <label class="field" for="weClient"><span>客戶</span><input id="weClient"></label>
+    <label class="field full" for="weTools"><span>使用工具</span><input id="weTools"></label>
+    <label class="field full" for="weDesc"><span>作品說明（空一行分段）</span><textarea id="weDesc"></textarea></label>
+    <label class="field full check" for="weFeature"><input type="checkbox" id="weFeature"><span>設為這個類別的主要作品（作品區最上排，每個類別各放一件；沒勾就用該類別的第一件）</span></label>
+    <div class="wedit-actions">
+      <button type="button" id="weDelete">刪除這件作品</button>
+      <div class="right">
+        <button type="button" data-close>取消</button>
+        <button type="submit" class="primary">套用</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<input type="file" id="imgPicker" accept="image/*" hidden>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="editUi"></div>
+
+<script>
+// ================= 預設內容（資料庫沒有資料時顯示） =================
+const DEFAULT = {
+  brand: "LIN · YU-AN",
+  name: "林予安",
+  role1: "UI / UX",
+  role2: "Graphic Design",
+  heroIntro: "介面與平面設計師。把複雜的需求，整理成好用又好看的畫面。",
+  ctaWorks: "看作品",
+  ctaContact: "聯絡我",
+  heroLeft: "Portfolio",
+  years: "2020 — 2026",
+  statementPhoto: null,
+  stats: [
+    { num: "6+", label: "年設計經驗" },
+    { num: "40+", label: "完成專案" },
+    { num: "12", label: "合作品牌" }
+  ],
+  cats: [
+    { key: "ui", name: "介面設計" },
+    { key: "graphic", name: "平面設計" },
+    { key: "brand", name: "品牌識別" }
+  ],
+  worksEn: "Selected Works",
+  worksTitle: "精選作品",
+  photo: null,
+  skillsTitle: "使用軟體",
+  skills: [
+    { abbr: "Fg", color: "#f3a07a" }, { abbr: "Ai", color: "#ff9a00" }, { abbr: "Ps", color: "#31a8ff" },
+    { abbr: "Id", color: "#ff5c8a" }, { abbr: "Ae", color: "#9999ff" }
+  ],
+  servicesTitle: "服務項目",
+  services: "介面設計 / 平面設計 / 品牌識別",
+  aboutEn: "About Me",
+  aboutTitle: "關於我",
+  bioLead: "我是一名介面與平面設計師，喜歡把複雜的需求整理成好用、好看的畫面。",
+  bio: "六年來參與 App、電商網站與品牌專案，從使用者訪談、資訊架構到最後的視覺與設計規範都能一手包辦。",
+  jobsTitle: "工作經歷",
+  jobs: [
+    { years: "2023 — 今", title: "暖光數位 資深 UI/UX 設計師", points: "主導會員 App 改版，結帳完成率提升 18%\n建立公司設計系統，元件超過 120 個\n帶領 3 人設計小組，與 PM、工程師協作" },
+    { years: "2020 — 2023", title: "好日設計工作室 平面設計師", points: "負責展覽主視覺、書籍裝幀與包裝設計\n完成 30 個以上品牌識別與商業案" }
+  ],
+  timelineTitle: "學歷與獎項",
+  timeline: [
+    { title: "金點設計獎 入圍", years: "2024" },
+    { title: "國立臺灣藝術大學 視覺傳達設計系", years: "2016 — 2020" }
+  ],
+  contactEn: "Contact",
+  contactTitle: "一起合作吧",
+  contactText: "接受全職機會與接案合作，歡迎來信或私訊聊聊你的專案。",
+  links: [
+    { label: "EMAIL", text: "hello@example.com", url: "mailto:hello@example.com" },
+    { label: "INSTAGRAM", text: "@yuan.design", url: "https://www.instagram.com/" },
+    { label: "YOUTUBE", text: "林予安 Design", url: "https://www.youtube.com/" },
+    { label: "LINE", text: "yuan.design", url: "https://line.me/" }
+  ],
+  footerLeft: "© 2026 LIN YU-AN",
+  footerRight: "UI / UX · GRAPHIC",
+  works: [
+    { id: "w1", cat: "ui", feature: true, title: "Mori 植物照護 App", year: "2025", role: "UI/UX 設計、使用者研究", client: "個人專案", tools: "Figma", image: null, art: "ui1", link: "https://www.youtube.com/",
+      desc: "為新手植物主人設計的照護提醒 App。訪談 12 位使用者後，發現最大的痛點是「不知道什麼時候該澆水」。\n\n以日曆加上植物卡片的方式呈現照護排程，可用性測試的任務完成率達 92%。" },
+    { id: "w2", cat: "ui", title: "暖光會員後台改版", year: "2024", role: "UX 主導、設計系統", client: "暖光數位", tools: "Figma、FigJam", image: null, art: "ui2",
+      desc: "重整超過 40 個頁面的資訊架構，將常用功能從 4 層選單縮短到 2 層。\n\n同步建立設計系統，讓工程交付時間縮短約三成。" },
+    { id: "w3", cat: "graphic", title: "《光與熱》展覽主視覺", year: "2025", role: "主視覺設計", client: "城南藝文空間", tools: "Illustrator、Photoshop", image: null, art: "poster", link: "https://www.instagram.com/",
+      desc: "以日落時的漸層光為概念，延伸出海報、票券與現場指標系統。\n\n主視覺應用在 8 種尺寸的實體與社群素材。" },
+    { id: "w4", cat: "graphic", title: "《四季》散文集裝幀", year: "2023", role: "書籍裝幀、內頁排版", client: "小日子出版", tools: "InDesign", image: null, art: "book",
+      desc: "直排書名搭配大量留白，呼應散文的節奏感。\n\n內頁採 25 級字、行距 1.8，提升長篇閱讀的舒適度。" },
+    { id: "w5", cat: "brand", title: "Ember 咖啡品牌識別", year: "2024", role: "品牌策略、標誌設計", client: "Ember Coffee", tools: "Illustrator", image: null, art: "brand",
+      desc: "以「餘燼」為意象，用水滴與火光融合成品牌標誌。\n\n交付標誌、配色、字體規範與門市應用指南。" },
+    { id: "w6", cat: "brand", title: "晴天氣泡飲包裝", year: "2023", role: "包裝設計", client: "晴天飲品", tools: "Illustrator、Dimension", image: null, art: "pack",
+      desc: "三種口味以色塊區分，讓消費者在貨架上一眼辨認。\n\n上市首月於超商通路銷量達預期的 1.4 倍。" }
+  ]
+};
+
+const ART = {
+  ui1: '<div class="art-ui1" style="position:absolute;inset:0"><div class="phone"><i class="big"></i><i></i><i class="half"></i><i></i></div><div class="phone"><i></i><i class="big"></i><i class="half"></i></div></div>',
+  ui2: '<div class="art-ui2" style="position:absolute;inset:0"><div class="win"><div class="side"></div><div class="main"><i></i><i></i><i></i><i></i></div></div></div>',
+  poster: '<div class="art-poster" style="position:absolute;inset:0"><div class="sheet"><small>EXHIBITION 2025</small><b>LIGHT<br>&amp; HEAT</b></div></div>',
+  book: '<div class="art-book" style="position:absolute;inset:0"><div class="cover"></div><div class="cover"></div></div>',
+  brand: '<div class="art-brand" style="position:absolute;inset:0"><div class="logo"><span></span><span>Ember</span></div><div class="swatches"><i style="background:#a9c9f0"></i><i style="background:#2f4f80"></i><i style="background:#13233d"></i></div></div>',
+  pack: '<div class="art-pack" style="position:absolute;inset:0"><div class="can"></div><div class="can"></div><div class="can"></div></div>'
+};
+// 已定稿的內容：一打開就直接顯示（訪客沒登入也看得到）
+const BAKED = {"aboutEn": "About Me", "aboutTitle": "關於我", "bio": "擁有四年多影音製作經驗，職涯從加入 YouTuber《中指通》團隊後起步，經手剪輯作品累積超過 2,000 萬次觀看，累積豐富的 YouTube 影音製作經驗，並培養對內容節奏與觀眾喜好的敏銳度。\n\n隨後逐步拓展至節目製作與多元影音專案，曾擔任《Joe & Jet 未過濾的 with Jason》節目製作人，負責節目企劃、攝影、剪輯及後製統籌，並參與呱吉《新資料夾》等節目的影音後製工作。\n\n作品涵蓋 Podcast、運動娛樂、遊戲實況、人物訪談及商業短影音，擅長結合內容敘事、影像調色與聲音設計，打造兼具觀看體驗與傳播力的影音作品。", "bioLead": "我是陳君澤，一名影音剪輯師。", "brand": "CHEN · CHUN-TSE", "cats": [{"key": "ui", "name": "Podcast"}, {"key": "graphic", "name": "長影片"}, {"key": "brand", "name": "短影片"}], "contactEn": "Contact", "contactText": "接受全職機會與接案合作，歡迎來信或私訊聊聊你的專案。", "contactTitle": "一起合作吧", "ctaContact": "聯絡我", "ctaWorks": "看作品", "footerLeft": "© 2026 CHEN · CHUN-TSE", "footerRight": "VIDEO EDITOR\nVINCENT", "heroIntro": "四年影音製作經驗，作品涵蓋 Podcast、運動娛樂與商業短影音，累積觀看超過 2,000 萬次。", "heroLeft": "Portfolio", "imgPos": {"photo": {"f": 18, "x": 57.2, "y": 31.9, "z": 1}, "work:wmwm81m4q": {"f": 18, "x": 50, "y": 50, "z": 1}, "work:wmwm8mbfn": {"f": 18, "x": 37.9, "y": 54.9, "z": 1}, "work:wmwm9mll7": {"f": 18, "x": 50, "y": 50, "z": 1}, "work:wmwm9u8m8": {"f": 18, "x": 52.4, "y": 14.9, "z": 1.44}, "work:wmwma067y": {"f": 18, "x": 50.1, "y": 100, "z": 1}}, "jobs": [{"points": "Podcast 音檔／影像剪輯\n音檔優化", "title": "呱吉｜Podcast 節目《新資料夾》剪輯師", "years": "2026 — 在職中"}, {"points": "節目影像剪輯\n部分影像拍攝", "title": "小牛講正經 YouTube 頻道｜剪輯師", "years": "2026 — 在職中"}, {"highlights": [{"label": "頻道收益成長", "note": "", "num": "+394%"}, {"label": "影片觀看次數成長", "note": "", "num": "+93%"}, {"label": "短影片觀看數成長", "note": "", "num": "+164%"}, {"label": "社群短影片總觀看數", "note": "每部平均約 16 萬", "num": "1,389萬"}, {"label": "每三個月觸及成長率", "note": "", "num": "+40%"}, {"label": "會員每月穩定增加", "note": "", "num": "75–100 人"}], "hlTitle": "任職期間成果", "points": "擔任職位：節目製作人／攝影／影音後製\n\n擔任《Joe & Jet 未過濾的 with Jason》Podcast 節目製作人，負責節目從前期企劃、錄製執行到後期製作的完整流程，涵蓋節目企劃、腳本撰寫、現場攝影、影片剪輯、影像調色、音訊優化及社群影音內容製作。\n\n依據每集主題與來賓特色規劃訪談方向及節目內容，並負責錄製現場的攝影、畫面構圖與設備配置，確保拍攝品質。\n\n後製階段透過多機位剪輯、對談節奏調整、影像調色及音訊處理，提升節目的觀看與收聽體驗，同時製作短影音及社群宣傳素材，延伸節目內容的傳播效益。", "title": "《Joe & Jet 未過濾的 with Jason》節目製作人", "years": "2024 — 2026"}, {"points": "自 2023 年 6 月起負責《瓦甘達 Play-One》節目音訊剪輯與後製工作，包含對談內容整理、音檔剪輯、音量平衡及音質優化，確保節目內容流暢且具備良好的收聽品質。\n同時參與社群平台經營，負責貼文編輯、節目宣傳及內容發布，協助節目維持社群曝光與觀眾互動。\n自 2026 年 7 月起，進一步拓展至短影音製作，將節目精華轉化為適合社群平台的短影音內容，透過剪輯節奏、字幕設計與內容編排，提升影片的觀看體驗與傳播效果。", "title": "瓦甘達 Play One Podcast 頻道｜剪輯師", "years": "2023 — 在職中"}, {"points": "YouTuber 中指通成立之公司，大學畢業後即加入擔任助理\n學習影像剪輯、平面設計、節目企劃\n2023 年 7 月起執行影像剪輯及平面設計工作\n協助廣告業配內容企劃發想，並管理中指通頻道", "title": "之智通鑑股份有限公司（中指通）｜影音剪輯", "years": "2022 — 2025"}], "jobsTitle": "工作經歷", "links": [{"label": "EMAIL", "text": "vincent122510458@gmail.com", "url": "mailto:vincent122510458@gmail.com"}, {"label": "INSTAGRAM", "text": "@v.sen_1225", "url": "https://www.instagram.com/v.sen_1225/"}, {"label": "LINE", "text": "0932987337", "url": ""}, {"label": "手機", "text": "0932987337", "url": "tel:0932987337"}], "name": "陳君澤", "photo": "6c8d148e7a5a1b01dc7cbdc61435ba67", "role1": "VIDEO EDITOR", "role2": "VINCENT", "services": "影片剪輯 / 短影音製作 / 節目企劃 / 攝影 / 影像調色 / 音訊後製 / 頻道社群管理", "servicesTitle": "服務項目", "skills": [{"abbr": "Pr", "color": "#9999ff"}, {"abbr": "Ae", "color": "#9999ff"}, {"abbr": "Me", "color": "#9999ff"}, {"abbr": "Ps", "color": "#2c99ea"}, {"abbr": "Lr", "color": "#2d99ea"}, {"abbr": "Ai", "color": "#ee8f03"}, {"abbr": "Logic Pro", "color": "#e2e9f0"}, {"abbr": "DaVinci ", "color": "#f297f2"}], "skillsTitle": "使用軟體", "statementPhoto": "ee9814f2888c9dd3eafda1a85fbe08a8", "statementPhotoPos": {"f": 11, "x": 50, "y": 70.6, "z": 1}, "stats": [{"label": "年剪輯經驗", "num": "4+"}, {"label": "完成影片", "num": "100+"}, {"label": "合作創作者", "num": "10+"}, {"label": "累積流量", "num": "2,000萬+"}], "works": [{"art": null, "cat": "ui", "client": "呱吉", "desc": "呱吉頻道《新資料夾》Podcast｜影音後製\n擔任職位：影片剪輯／影音後製\n-\n負責《新資料夾》Podcast 節目的影音後製工作，涵蓋多機位影片剪輯、影像調色、影音素材管理及音訊優化。\n透過多機位畫面切換與剪輯節奏調整，維持多人對談的流暢度與觀看體驗；同時進行不同機位的色彩校正與影像統一，確保整體視覺呈現的一致性。\n音訊方面則針對人聲清晰度、音量平衡及背景雜音進行優化，提升節目的整體收聽品質。此外，也負責大量影音素材的分類、整理與管理，確保後製流程順暢且有效率。\n-\n主要工作內容\n多機位影片剪輯： 畫面切換、對談節奏調整及內容整合。\n影像調色： 多機位色彩校正、曝光與白平衡調整，維持畫面一致性。\n影音素材管理： 原始影片、音訊素材分類整理及專案檔案管理。\n音訊優化： 人聲處理、音量平衡、降噪及整體聲音品質調整。", "feature": true, "id": "w1", "image": "bbff8251351dc22ffb0471c11fe90d77", "links": [{"label": "", "url": "https://www.youtube.com/@FroggyChiu/videos"}, {"label": "", "url": "https://podcasts.apple.com/tw/podcast/%E5%91%B1%E5%90%89/id1477164549"}], "role": "影片剪輯、影片調色、影片素材整理、音檔優化", "title": "《新資料夾》Podcast｜影音後製", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、Logic Pro、DaVinci Resolve", "videos": [{"title": "【呱吉】新資料夾(309)：放屁警察放屁木頭", "url": "https://www.youtube.com/watch?v=0aUwHCZTUYw&t=2010s"}, {"title": "【新資料夾】鬼故事特輯EP2：️要不要出來玩", "url": "https://www.youtube.com/watch?v=sl1C2wFTJNw&t=2893s"}, {"title": "【新資料夾】職場特輯EP3：這世界還有老闆能愛嗎？", "url": "https://www.youtube.com/watch?v=4b5dKOGYYjQ&t=2756s"}], "year": "2026 — 持續中"}, {"art": "ui2", "cat": "ui", "client": "Joe & Jet 未過濾的 with Jason", "desc": "擔任職位：節目製作人／影片剪輯師\n擔任《Joe & Jet 未過濾的 with Jason》Podcast 節目製作人，負責節目企劃、錄製統籌、影片剪輯、影音後製及內容上架等工作。\n從前期主題規劃、來賓訪談內容安排，到後期多機位剪輯、影像調整、音訊優化與社群短影音製作，參與節目完整製作流程。\n透過對談節奏掌握、內容重點整理與畫面切換，提升節目的觀看流暢度與娛樂性，並依據不同平台的內容特性，製作適合 YouTube 及社群媒體的影音內容。\n\n主要工作內容\n節目企劃： 主題發想、訪談大綱設計、來賓資料蒐集與腳本規劃。\n製作統籌： 錄製流程安排、節目進度管理及製作協調。\n影片剪輯： 多機位畫面切換、對談節奏調整、內容精簡與敘事編排。\n影音後製： 影像調整、音訊優化、字幕製作及素材管理。\n社群短影音： 精選節目亮點，製作 YouTube Shorts、Instagram Reels 等短影音內容。\n頻道營運： 影片封面製作、標題規劃、內容上架及會員專屬內容管理。", "feature": false, "id": "w2", "image": "5a69fd63ba5eaa9e739fc5df9edac039", "links": [{"label": "", "url": "https://www.youtube.com/@jjj_unfiltered/videos"}, {"label": "", "url": "https://www.instagram.com/jjj_unfiltered/"}, {"label": "", "url": "https://podcasts.apple.com/tw/podcast/joe-jet-%E6%9C%AA%E9%81%8E%E6%BF%BE%E7%9A%84-with-jason/id1717625450"}], "role": "節目製作人／攝影／影音後製", "title": "《Joe & Jet 未過濾的 with Jason》｜節目製作暨影音後製暨社群小編", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、Logic Pro、DaVinci Resolve、Riverside", "videos": [{"title": "S2EP13 如何看臺灣籃球的發展", "url": "https://www.youtube.com/watch?v=MuSvJkdKwOs&t=526s"}, {"title": "S3EP5 「我都打不到球了 你們怎麼覺得你們可以」李愷諺給年輕球員最直接的建議", "url": "https://www.youtube.com/watch?v=S8osas17vcA&t=912s"}, {"title": "S2EP36 林書豪生涯最累的季後賽", "url": "https://www.youtube.com/watch?v=DFe0qya5JC0&t=1038s"}], "year": "2024 — 2026"}, {"art": "poster", "cat": "ui", "client": "瓦甘達 Play-One", "desc": "擔任職位：音訊剪輯／短影音剪輯／社群編輯\n-\n自 2023 年 6 月起負責《瓦甘達 Play-One》節目音訊剪輯與後製工作，包含對談內容整理、音檔剪輯、音量平衡及音質優化，確保節目內容流暢且具備良好的收聽品質。\n同時參與社群平台經營，負責貼文編輯、節目宣傳及內容發布，協助節目維持社群曝光與觀眾互動。\n自 2026 年 7 月起，進一步拓展至短影音製作，將節目精華轉化為適合社群平台的短影音內容，透過剪輯節奏、字幕設計與內容編排，提升影片的觀看體驗與傳播效果。\n-\n主要工作內容\n音訊剪輯（2023 年 6 月至今）： 對談內容剪輯、音訊整理、音量平衡及音質優化。\n社群經營： 社群貼文編輯、節目宣傳、內容發布及日常管理。\n短影音剪輯（2026 年 7 月至今）： 節目精華挑選、短影音剪輯、字幕製作及節奏編排。", "feature": false, "id": "w3", "image": "8423fa2b35088536da386ab486920fb6", "links": [{"label": "", "url": "https://www.instagram.com/"}], "role": "音訊剪輯／短影音剪輯／社群編輯", "title": "《瓦甘達 Play-One》｜影音剪輯暨社群經營", "tools": "Adobe Premiere Pro、Adobe Photoshop、Logic Pro", "videos": [{"title": "瓦甘達TwoWay#310︰我好像挑錯時間上節目了 Feat.庫奇", "url": "https://www.youtube.com/watch?v=l82QYJ78ZSI&t=2350s"}, {"title": "瓦甘達ThreeWay#309︰我是巨大的公牛迷但我看更多巫師比賽因為公牛第一節還沒打完就結束了 Feat.Kuan", "url": "https://www.youtube.com/watch?v=qATjq6sMZBQ&t=4492s"}, {"title": "瓦甘達ThreeWay#308︰Cam Boozer真的好會打籃球喔 Feat.MGU", "url": "https://www.youtube.com/watch?v=JrxcB6NxSLg&t=4748s"}], "year": "2023 — 持續中"}, {"art": "book", "cat": "graphic", "client": "中指通", "desc": "擔任職位：影音剪輯師／內容企劃\n-\n合作期間：2022 年至今\n2022–2025 年： 正職\n2025 年至今： 外包合作\n-\n2022 年至 2025 年擔任《中指通》正職影音製作人員，負責長篇影片與短影音剪輯、商業合作企劃、直播內容規劃及影片封面製作，參與從前期企劃到後期製作的完整內容產出流程。\n依據不同影片主題與平台特性，調整剪輯節奏、敘事架構及視覺呈現，兼顧內容娛樂性與觀看體驗。同時參與品牌業配企劃，將商業合作需求融入影音內容，平衡品牌訊息與頻道風格。\n自 2025 年起轉為外包合作模式，持續承接長篇影片、短影音剪輯及品牌業配相關專案，延續與團隊的長期合作關係。\n\n主要工作內容\n-\n正職期間｜2022–2025\n長篇影片剪輯： 內容編排、敘事節奏調整、畫面處理及影音後製。\n短影音剪輯： 精華內容挑選、節奏編排、字幕製作及直式影片剪輯。\n品牌業配企劃： 商業合作內容發想、腳本規劃及品牌訊息整合。\n直播企劃： 直播主題發想、節目流程規劃及內容安排。\n影片封面製作： YouTube 縮圖設計、視覺素材編排及圖片後製。\n\n外包合作期間｜2025 年至今\n-\n長篇影片剪輯與後製\n短影音剪輯與製作\n品牌業配專案製作", "feature": false, "id": "w4", "image": "8d437a32a19445415e6fc5968f68f889", "links": [{"label": "", "url": "https://www.youtube.com/@fingermaster56"}], "role": "影音剪輯師", "title": "《中指通》｜長影音製作", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、Logic Pro、DaVinci Resolve", "videos": [{"title": "暗黑版魷魚遊戲推出續集?!身材教科書復出拍新作!!中指通的八月作品精選", "url": "https://www.youtube.com/watch?v=cqH7NrWU_AQ&t=419s"}, {"title": "2026 TRE 台北國際紅人展 超過百人明星陣容全點名!! 千年一遇瀨戶環奈直上白金!!", "url": "https://www.youtube.com/watch?v=eBvlCZa1vV0&t=384s"}, {"title": "如何挑選好片?!日本片商+重點演員介紹!!總有一部屬於你的片!!", "url": "https://www.youtube.com/watch?v=5INGZya0Wpk&t=532s"}], "year": "2022 — 持續中"}, {"art": "brand", "cat": "graphic", "client": "小牛講正經", "desc": "擔任職位：影片剪輯師\n-\n負責《小牛講正經》YouTube 頻道影片剪輯與後製，依據影片主題與內容架構進行素材整理、畫面編排及剪輯節奏調整，透過適當的畫面切換與視覺呈現，提升影片的流暢度與觀看體驗。\n-\n主要工作內容\n影片剪輯： 內容整理、畫面編排及敘事節奏調整。\n影音後製： 畫面銜接、基礎影像與聲音處理。\n內容呈現： 依據影片主題調整剪輯風格，強化資訊傳遞與觀看流暢度。", "feature": false, "id": "w5", "image": "5d9a39317083a74f18abf014aa6ff838", "links": [{"label": "", "url": "https://www.youtube.com/@%E5%B0%8F%E7%89%9B%E8%AC%9B%E6%AD%A3%E7%B6%93"}], "role": "影片剪輯", "title": "《小牛講正經》YouTube 頻道｜影片剪輯", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、Logic Pro、DaVinci Resolve", "videos": [{"title": "新冠疫情、論文抄襲⋯為何掀起巨無霸民怨海嘯？【2022台北市長選戰回顧】", "url": "https://www.youtube.com/watch?v=UWfpvW76rkI"}, {"title": "回到1999那一年，是誰害死了這支三連霸人氣球隊？【味全龍演進史】", "url": "https://www.youtube.com/watch?v=UzYulahH-Aw&t=222s"}, {"title": "沒有手機跟網路的時代，陌生的男男女女要如何相遇？【台灣交友演進史】", "url": "https://www.youtube.com/watch?v=2Cpvu-oUbLI"}], "year": "2026 — 持續中"}, {"art": "pack", "cat": "brand", "client": "中指通", "desc": "擔任職位：短影音剪輯師\n合作期間：2022 年至今\n-\n負責《中指通》社群短影音剪輯與後製，依據不同主題與內容特色，挑選具話題性及娛樂性的精彩片段，透過快速的剪輯節奏、字幕設計、音效搭配與視覺效果，強化影片的吸引力與觀看體驗。\n針對 YouTube Shorts、Instagram Reels 等短影音平台的觀看習慣，調整影片節奏與內容呈現方式，在有限的影片長度內有效傳遞資訊、凸顯內容亮點，提升社群內容的傳播潛力。\n-\n主要工作內容\n短影音剪輯： 素材篩選、內容濃縮、敘事編排及節奏調整。\n字幕與視覺設計： 動態字幕、重點文字強調及視覺效果製作。\n音效處理： 音效搭配、背景音樂編排及聲音優化。\n社群影音製作： 直式影片編排與不同平台的影音格式調整。", "feature": false, "id": "w6", "image": "59dbaf97d257c10e9d8b953bad0a3f7b", "links": [{"label": "", "url": "https://www.instagram.com/fingermaster56/reels/"}], "role": "影音剪輯", "title": "《中指通》｜社群短影音剪輯", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、DaVinci Resolve", "videos": [{"title": "COSFORCE 甜心女僕 嗎", "url": "https://www.instagram.com/reel/DW_UZORk2IV/"}, {"title": "這應該很好猜…吧", "url": "https://www.instagram.com/reel/DcdiL1Fz7hO/"}, {"title": "CFS 高雄好熱喔", "url": "https://www.instagram.com/reel/DdogCRGzvc7/"}], "year": "2022 — 持續中"}, {"art": null, "cat": "brand", "client": "呱吉", "desc": "擔任職位：短影音剪輯師\n-\n負責呱吉直播精華短影音剪輯與後製，依據團隊提供的直播片段範圍進行內容整理、剪輯節奏調整及視覺效果製作，將原始直播素材轉化為適合社群平台觀看的短影音作品。\n透過字幕設計、畫面縮放、音效搭配及節奏編排，強化影片的內容重點與娛樂性，讓觀眾能在短時間內掌握核心資訊，提升整體觀看體驗。\n-\n主要工作內容\n直播精華剪輯： 依據團隊指定的直播片段範圍進行剪輯、內容精簡與節奏調整。\n短影音製作： 敘事編排、畫面切換及直式影片製作。\n字幕與視覺設計： 動態字幕、重點文字強調、畫面縮放及視覺效果。\n音訊處理： 音效搭配、音量調整及背景音樂編排。", "feature": false, "id": "wmwm81m4q", "image": "93a68929509734d7d7cc922246bd4a02", "links": [{"label": "", "url": "https://www.instagram.com/froggychiu/"}], "role": "直播精華短影音剪輯", "title": "《呱吉》｜直播精華短影音剪輯", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、DaVinci Resolve", "videos": [{"title": "竟然給我放大絕...", "url": "https://www.instagram.com/p/DZUvwXcCKVT/"}, {"title": "怎麼都沒人跟我說", "url": "https://www.instagram.com/p/DaKtbRhD8E-/"}, {"title": "連啤酒都搞我。", "url": "https://www.instagram.com/p/DYMpgGhgdLQ/"}], "year": "2026 — 持續中"}, {"art": null, "cat": "brand", "client": "Joe & Jet 未過濾的 with Jason", "desc": "擔任職位：短影音企劃／影片剪輯／社群內容製作\n-\n負責《Joe & Jet 未過濾的 with Jason》節目短影音內容製作，將完整 Podcast 訪談轉化為適合 YouTube Shorts、Instagram Reels 等社群平台的精華影片。\n透過節目內容分析、精華片段挑選、剪輯節奏設計及字幕編排，凸顯來賓觀點、精彩故事與趣味互動，讓長篇訪談內容以更精簡且具吸引力的形式呈現，提升節目在社群平台的曝光與傳播效益。\n-\n主要工作內容\n短影音企劃： 精華主題發想、內容篩選及影片切角規劃。\n影片剪輯： 對談內容精簡、節奏調整、畫面編排及視覺效果製作。\n字幕製作： 動態字幕設計、重點文字強調及視覺呈現優化。\n影音後製： 影像色彩調整、人聲優化及音效處理。\n社群內容製作： 依據不同平台特性調整影片比例、長度與內容呈現方式。", "feature": true, "id": "wmwm8mbfn", "image": "36bdc1606c8c9bec0d67162c82fd562a", "links": [{"label": "", "url": "https://www.instagram.com/jjj_unfiltered/reels/"}], "role": "短影音企劃／影片剪輯／社群內容製作", "title": "《Joe & Jet 未過濾的 with Jason》｜短影音製作", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、Logic Pro、DaVinci Resolve", "videos": [{"title": "林書豪談到關於給對方機會的例子", "url": "https://www.instagram.com/reel/DMM47NESw2a/"}, {"title": "臺灣年輕球員最大的問題是？", "url": "https://www.instagram.com/reel/DE4O3FSxcSG/"}, {"title": "高國豪曾差點就讀能仁家商？", "url": "https://www.instagram.com/reel/DGfXpc_Ss4v/"}], "year": "2024 — 2026"}, {"art": null, "cat": "brand", "client": "Mamba Lin", "desc": "擔任職位：短影音剪輯師\n-\n負責《Mamba Lin｜球衣藏家》社群短影音剪輯，將球衣收藏、籃球文化及相關故事轉化為節奏明快、具吸引力的短影音內容。\n透過影片節奏調整、畫面編排、重點資訊呈現及字幕設計，凸顯球衣特色與背後的收藏故事，兼顧知識性、娛樂性及社群觀看體驗。\n-\n主要工作內容\n短影音剪輯： 素材篩選、內容精簡、敘事節奏調整及畫面編排。\n字幕製作： 字幕編排、重點資訊強調及動態文字效果。\n視覺呈現： 畫面構圖調整、素材搭配及基礎影像調色。\n音訊處理： 背景音樂搭配、音效設計及人聲音量優化。\n社群格式優化： 依據 Instagram Reels、YouTube Shorts 等平台特性調整影片呈現方式。", "feature": false, "id": "wmwm8rwqm", "image": "a892de4a102aed460607ba41be4979d9", "links": [{"label": "", "url": "https://www.instagram.com/mambalin_/reels/"}], "role": "短影音剪輯", "title": "《Mamba Lin｜球衣藏家》｜短影音剪輯", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、DaVinci Resolve", "videos": [{"title": "這波來大票的", "url": "https://www.instagram.com/reel/Df4QoRZi51Z/"}, {"title": "做完功課讓我也好想去打NBA, 現在還有機會嗎", "url": "https://www.instagram.com/reel/Dd_ftR6iZuv/"}, {"title": "AI時代的到來 聊聊你們認為關鍵的差別在哪邊？", "url": "https://www.instagram.com/reel/Dc3J4Fdi5Aa/"}], "year": "2023 — 持續中"}, {"art": null, "cat": "brand", "client": "林檎咬一口", "desc": "擔任職位：影片剪輯師／影音後製\n-\n負責《林檎咬一口》遊戲直播精華剪輯，將長時間的遊戲實況內容濃縮為節奏明快、具有娛樂性與吸引力的精華影片。\n透過精彩遊戲片段篩選、剪輯節奏調整、趣味字幕及音效設計，凸顯遊戲過程中的精彩操作、逗趣反應與實況互動。運用畫面放大、特效及迷因素材強化娛樂效果，讓觀眾能快速掌握遊戲亮點，提升影片的觀看體驗。\n-\n主要工作內容\n遊戲精華剪輯： 長時間遊戲實況素材整理、精彩操作與趣味片段篩選。\n節奏與敘事設計： 重新編排遊戲過程，強化緊張時刻、反轉情節及娛樂效果。\n字幕製作： 趣味字幕、動態文字及重點對話呈現。\n視覺效果： 畫面縮放、趣味特效、迷因素材及視覺元素搭配。\n音訊後製： 音效設計、背景音樂搭配及遊戲音效與人聲平衡。", "feature": false, "id": "wmwm9mll7", "image": "fecd6e93fe028cde79f8fcce75f4d1ae", "links": [{"label": "", "url": "https://www.instagram.com/ringo.tw/"}], "role": "遊戲直播精華剪輯", "title": "《林檎咬一口》｜遊戲直播精華剪輯", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、DaVinci Resolve", "videos": [{"title": "繼承通哥的意志!", "url": "https://www.instagram.com/p/Det_XAFP9wX/"}, {"title": "阿湯哥都不敢像我們這樣挑戰", "url": "https://www.instagram.com/p/DdJRJyivD52/"}, {"title": "請把我頂出來", "url": "https://www.instagram.com/p/DU2_c-2jyUh/"}], "year": "2026 — 持續中"}, {"art": null, "cat": "brand", "client": "阿愷教練", "desc": "擔任職位：短影音剪輯師\n-\n負責《愷放問答》系列短影音剪輯，將問答互動內容轉化為節奏明快、具有吸引力的社群短影片。\n透過內容精簡、剪輯節奏調整、畫面編排及字幕設計，凸顯問答過程中的精彩觀點與趣味互動，保留人物自然的對話風格，同時提升影片的流暢度與觀看體驗。\n-\n主要工作內容\n短影音剪輯： 精華片段挑選、內容精簡及敘事節奏調整。\n字幕製作： 字幕編排、重點文字強調及動態效果設計。\n視覺呈現： 畫面切換、素材搭配及視覺節奏優化。\n音訊處理： 人聲優化、背景音樂搭配及音效設計。\n社群影音製作： 針對短影音平台調整影片比例、節奏與內容呈現方式。", "feature": false, "id": "wmwm9u8m8", "image": "f628f62ba3e34870a74dbd2d9f75e118", "links": [{"label": "", "url": "https://www.instagram.com/akai.coach/"}], "role": "短影音剪輯", "title": "《愷放問答》｜短影音剪輯", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、DaVinci Resolve", "videos": [{"title": "大家還記得「慶祝哥」嗎？", "url": "https://www.instagram.com/p/DeWtEvYBBLT/"}, {"title": "被批評之後，連慶祝都不敢了？", "url": "https://www.instagram.com/p/DeZPKixBcm2/"}, {"title": "國家隊要進步，不能只靠集訓那幾天", "url": "https://www.instagram.com/p/DeUC9R9su2D/"}], "year": "2026 — 持續中"}, {"art": null, "cat": "brand", "client": "小牛講正經", "desc": "擔任職位：短影音剪輯師／影音後製\n-\n負責《小牛講正經》系列短影音後製，透過內容精簡、剪輯節奏調整、字幕設計及視覺效果，將人物談話與觀點分享轉化為節奏明快、具有吸引力的社群影音內容。\n依據影片主題與對話節奏進行畫面編排，強化內容重點與人物特色，並搭配動態字幕、音效及輔助素材，讓資訊傳遞更加清晰，同時兼顧娛樂性與觀看體驗。\n-\n主要工作內容\n短影音剪輯： 內容篩選、重點整理、節奏調整及畫面編排。\n字幕製作： 動態字幕設計、關鍵資訊強調及文字視覺呈現。\n視覺效果： 畫面縮放、轉場設計及輔助素材搭配。\n音訊後製： 人聲優化、背景音樂搭配及音效設計。\n社群影音優化： 依據短影音平台特性調整內容節奏與呈現方式。", "feature": false, "id": "wmwma067y", "image": "8999004eb220f403117149170d764fd1", "links": [{"label": "", "url": "https://www.instagram.com/andyko1988/reels/"}], "role": "短影音剪輯", "title": "《小牛講正經》｜短影音剪輯", "tools": "Adobe Premiere Pro、Adobe After Effects、Adobe Photoshop、DaVinci Resolve", "videos": [{"title": "1989年發生什麼大事，你還記得嗎？", "url": "https://www.instagram.com/reel/DfWuFFuSROv/"}, {"title": "欸你知道，新北市這條寬敞的河道，竟然是用人工挖出來的？", "url": "https://www.instagram.com/reel/DZHdcCQC46u/"}, {"title": "欸你知道，北高雄這一大片公園綠地，讓市府損失了一百億？", "url": "https://www.instagram.com/reel/DbOCr_TPoLQ/"}], "year": "2026 — 持續中"}], "worksEn": "PORTFOLIO", "worksTitle": "作品集", "years": "2022 — 2026"};
+const NEW_ITEM = {
+  jobs: () => ({ years: "年份", title: "公司／職稱", points: "工作內容（一行一項）" }),
+  timeline: () => ({ title: "學歷或獎項", years: "年份" }),
+  skills: () => ({ abbr: "Pr", color: "#9999ff" }),
+  stats: () => ({ num: "0", label: "說明" }),
+  highlights: () => ({ num: "0%", label: "成果說明", note: "" }),
+  links: () => ({ label: "LABEL", text: "顯示文字", url: "https://" })
+};
+
+// ================= 狀態 =================
+const clone = o => JSON.parse(JSON.stringify(o));
+const CACHE_KEY = "portfolio-content-v1";
+function readCache() { try { const t = localStorage.getItem(CACHE_KEY); return t ? JSON.parse(t) : null; } catch (e) { return null; } }
+function writeCache(d) { try { localStorage.setItem(CACHE_KEY, JSON.stringify(d)); } catch (e) {} }
+let content = migrate(readCache() || BAKED);
+let saved = clone(content);
+let editing = false, dirty = false, saving = false;
+let canEdit = false, db = null, assets = null;
+let filter = "all";
+
+// ================= 小工具 =================
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const safeId = id => typeof id === "string" && /^[\w.:-]+$/.test(id) ? id : null;
+const safeUrl = u => /^(https?:|mailto:|tel:)/i.test(String(u || "").trim()) ? String(u).trim() : "#";
+const safeColor = c => /^#[0-9a-f]{3,8}$/i.test(String(c || "")) ? c : "#a9c9f0";
+const PLATFORMS = [
+  [/youtube\.com|youtu\.be/i, "YouTube", "▶"],
+  [/instagram\.com/i, "Instagram", "◎"],
+  [/tiktok\.com/i, "TikTok", "♪"],
+  [/threads\.(net|com)/i, "Threads", "@"],
+  [/facebook\.com|fb\.watch|fb\.com/i, "Facebook", "f"],
+  [/(twitter|x)\.com/i, "X", "𝕏"],
+  [/vimeo\.com/i, "Vimeo", "▶"],
+  [/bilibili\.com|b23\.tv/i, "Bilibili", "▶"],
+  [/spotify\.com/i, "Spotify", "◉"],
+  [/podcasts\.apple\.com/i, "Apple Podcasts", "◉"],
+  [/kkbox\.com/i, "KKBOX", "◉"],
+  [/soundon\.fm/i, "SoundOn", "◉"],
+  [/firstory\.me/i, "Firstory", "◉"],
+  [/drive\.google\.com/i, "Google 雲端", "↗"],
+  [/dropbox\.com/i, "Dropbox", "↗"],
+  [/behance\.net/i, "Behance", "Bē"],
+  [/linkedin\.com/i, "LinkedIn", "in"]
+];
+function platform(u) {
+  u = String(u || "");
+  for (const [re, name, icon] of PLATFORMS) if (re.test(u)) return { name, icon };
+  return { name: "連結", icon: "↗" };
+}
+const validUrl = u => /^https?:\/\/[^/\s]+\.[^\s]+/i.test(String(u || "").trim());
+const linksOf = w => (Array.isArray(w.links) ? w.links : (w.link ? [{ url: w.link }] : [])).filter(l => l && validUrl(l.url));
+const videosOf = w => (Array.isArray(w.videos) ? w.videos : []).filter(v => v && validUrl(v.url));
+const hasLink = w => linksOf(w).length > 0;
+const getPath = (o, p) => p.split(".").reduce((a, k) => a == null ? a : a[k], o);
+function setPath(o, p, v) { const ks = p.split("."); const last = ks.pop(); ks.reduce((a, k) => a[k], o)[last] = v; }
+function toast(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove("show"), 2200); }
+
+// 可編輯文字：tag, 路徑, class, 是否單行, 額外屬性
+function T(tag, path, cls = "", single = true, attrs = "") {
+  return `<${tag} class="${cls}" data-path="${path}"${single ? " data-single" : ""} ${attrs}>${esc(getPath(content, path))}</${tag}>`;
+}
+function imgOrArt(image, art, alt, key) {
+  const id = safeId(image);
+  if (id) return imgEl(id, alt, key);
+  if (art && ART[art]) return ART[art];
+  return `<div class="art-empty" style="position:absolute;inset:0">尚未上傳圖片</div>`;
+}
+// ---------- 每張圖片的位置與縮放（key：statementPhoto、photo、work:作品id） ----------
+function getPos(key) {
+  const all = content.imgPos || {};
+  const p = all[key] || (key === "statementPhoto" ? content.statementPhotoPos : null) || {};
+  const n = (v, d, lo, hi) => Math.min(hi, Math.max(lo, isFinite(+v) ? +v : d));
+  return { x: n(p.x, 50, 0, 100), y: n(p.y, 50, 0, 100), z: n(p.z, 1, 1, 3), f: n(p.f, 18, 0, 45) };
+}
+function setPos(key, p) { content.imgPos = { ...(content.imgPos || {}), [key]: p }; }
+const imgStyle = p => `object-position:${p.x}% ${p.y}%;transform:scale(${p.z});transform-origin:${p.x}% ${p.y}%`;
+function imgEl(id, alt, key) {
+  return `<img src="images/${id}.jpg" alt="${esc(alt)}" loading="lazy" draggable="false"${key ? ` data-pos-key="${esc(key)}" style="${imgStyle(getPos(key))}"` : ""}>`;
+}
+function applyPos(key) {
+  const p = getPos(key);
+  document.querySelectorAll("img[data-pos-key]").forEach(img => { if (img.dataset.posKey === key) img.style.cssText = imgStyle(p); });
+  if (key === "statementPhoto") document.querySelectorAll(".sp-frame").forEach(fr => fr.style.setProperty("--fade", p.f + "%"));
+  document.querySelectorAll("input[data-adj]").forEach(inp => { if (inp.dataset.adj === key && document.activeElement !== inp) inp.value = p[inp.dataset.pos]; });
+}
+function posCtrl(key, withFade) {
+  const p = getPos(key), uid = key.replace(/[^\w]/g, "_");
+  return `<div class="sp-ctrl">
+    <label for="z_${uid}">縮放</label><input id="z_${uid}" type="range" min="1" max="3" step="0.01" value="${p.z}" data-adj="${esc(key)}" data-pos="z">
+    ${withFade ? `<label for="f_${uid}">邊緣漸層</label><input id="f_${uid}" type="range" min="0" max="45" step="1" value="${p.f}" data-adj="${esc(key)}" data-pos="f">` : ""}
+    <button type="button" class="ed-btn" data-pos-reset="${esc(key)}">重設</button>
+    <span class="sp-hint">直接拖曳圖片可以移動位置</span>
+  </div>`;
+}
+// ---------- 年份下拉選單 ----------
+const THIS_YEAR = new Date().getFullYear();
+function yearOpts(sel, isEnd, ongoingLabel, blankLabel) {
+  let h = `<option value=""${sel === "" ? " selected" : ""}>${blankLabel}</option>`;
+  if (isEnd) h += `<option value="ongoing"${sel === "ongoing" ? " selected" : ""}>${ongoingLabel}</option>`;
+  for (let y = Math.max(THIS_YEAR + 1, 2027); y >= 2000; y--) h += `<option value="${y}"${String(sel) === String(y) ? " selected" : ""}>${y}</option>`;
+  return h;
+}
+function joinYears(a, b, ongoingLabel) {
+  if (b === "ongoing") return a ? `${a} — ${ongoingLabel}` : ongoingLabel;
+  if (!a) return b || "";
+  return b && b !== a ? `${a} — ${b}` : a;
+}
+function yearCell(path, ongoingLabel) {
+  const v = String(getPath(content, path) || "");
+  if (!editing) return `<div class="yr">${esc(v)}</div>`;
+  const ys = v.match(/\d{4}/g) || [], on = /持續|今|now|在職|present/i.test(v);
+  return `<div class="yr yr-pick" data-year="${path}" data-ongoing="${ongoingLabel}">
+    <select data-part="from" aria-label="開始年份">${yearOpts(ys[0] || "", false, "", "開始")}</select>
+    <select data-part="to" aria-label="結束年份">${yearOpts(on ? "ongoing" : (ys[1] || ""), true, ongoingLabel, "（同一年）")}</select>
+  </div>`;
+}
+// 依年份排序：進行中的排最前，再依結束年份、開始年份由新到舊
+function yearKey(s) {
+  s = String(s || "");
+  const ys = (s.match(/\d{4}/g) || []).map(Number);
+  const ongoing = /持續|今|now|在職|present/i.test(s);
+  const start = ys[0] || 0, end = ongoing ? 9999 : (ys[ys.length - 1] || start);
+  return [end, start];
+}
+// 由舊到新：先比開始年份，再比結束年份（進行中的排在同年的最後）
+function byYearAsc(a, b) { const [ea, sa] = yearKey(a), [eb, sb] = yearKey(b); return (sa - sb) || (ea - eb); }
+function byYear(a, b) { const [ea, sa] = yearKey(a), [eb, sb] = yearKey(b); return (eb - ea) || (sb - sa); }
+const catOf = key => content.cats.find(c => c.key === key) || content.cats[0] || { name: "" };
+const imgBtns = target => editing && assets
+  ? `<div class="img-slot"><button type="button" class="ed-btn" data-img="${target}">更換圖片</button>${getPath(content, target) ? `<button type="button" class="ed-btn danger" data-img-clear="${target}">移除</button>` : ""}</div>`
+  : "";
+const delBtn = path => editing ? `<button type="button" class="ed-btn danger" data-del="${path}">刪除</button>` : "";
+const addBtn = (list, label) => editing ? `<button type="button" class="ed-btn ed-add" data-add="${list}">＋ ${label}</button>` : "";
+const editRow = path => editing ? `<div class="ed-row">${delBtn(path)}</div>` : "";
+
+// ================= 繪製 =================
+function render() {
+  const c = content;
+  document.body.classList.toggle("editing", editing);
+  $("brand").innerHTML = T("span", "brand");
+
+  $("heroMain").innerHTML = `
+    <div class="hero-roles latin">${T("span", "role1")}<i></i>${T("span", "role2")}</div>
+    ${T("h1", "name", "hero-name")}
+    ${T("p", "heroIntro", "hero-intro pre", false)}
+    <div class="hero-cta">
+      ${editing ? T("span", "ctaWorks", "btn solid") + T("span", "ctaContact", "btn ghost")
+                : `<a class="btn solid" href="#works">${esc(c.ctaWorks)} <span aria-hidden="true">↓</span></a><a class="btn ghost" href="#contact">${esc(c.ctaContact)}</a>`}
+    </div>`;
+  $("heroFoot").innerHTML = T("span", "heroLeft") + T("span", "years");
+
+  $("statementWrap").innerHTML = `
+    ${(() => {
+      const id = safeId(c.statementPhoto);
+      if (!id && !editing) return "";
+      const p = getPos("statementPhoto");
+      const ctrl = editing && id ? posCtrl("statementPhoto", true) : "";
+      return `<div class="sp-wrap"><div class="statement-photo ${id ? "has-img" : "art-empty"}">${id
+        ? `<div class="sp-frame adj" data-adj-frame="statementPhoto" style="--fade:${p.f}%">${imgEl(id, c.name + " 的照片", "statementPhoto")}</div>`
+        : "放一張你的照片（建議橫式）"}${imgBtns("statementPhoto")}</div>${ctrl}</div>`;
+    })()}
+    <div class="stats-col">
+      <div class="stats">${c.stats.map((s, i) => `<div class="stat">${T("div", `stats.${i}.num`, "stat-num")}${T("div", `stats.${i}.label`, "stat-label")}${editRow(`stats.${i}`)}</div>`).join("")}</div>
+      ${addBtn("stats", "新增數字")}
+    </div>`;
+
+  $("worksTitle").innerHTML = T("span", "worksEn", "latin") + T("h2", "worksTitle");
+  $("filters").innerHTML = editing
+    ? `<span class="fchip">全部</span>` + c.cats.map((f, i) => T("span", `cats.${i}.name`, "fchip")).join("")
+    : [{ key: "all", name: "全部" }, ...c.cats].map(f =>
+        `<button type="button" data-filter="${esc(f.key)}" aria-pressed="${filter === f.key}">${esc(f.name)}</button>`).join("");
+
+  const shown = c.works.map((w, i) => ({ w, i })).sort((a, b) => byYear(a.w.year, b.w.year) || a.i - b.i).filter(({ w }) => editing || filter === "all" || w.cat === filter);
+  // 前排主要作品：「全部」時每個類別各放一件（優先用勾選「主要作品」的，否則取該類別第一件）
+  let main = [];
+  if (filter === "all" || editing) {
+    for (const cat of c.cats) {
+      const inCat = shown.filter(({ w }) => w.cat === cat.key);
+      const pick = inCat.find(({ w }) => w.feature) || inCat[0];
+      if (pick) main.push(pick);
+    }
+  } else {
+    main = shown.filter(({ w }) => w.feature).slice(0, 3);
+    for (const it of shown) { if (main.length >= 3) break; if (!main.includes(it)) main.push(it); }
+  }
+  const rest = shown.filter(it => !main.includes(it));
+  const card = ({ w, i }, big) => {
+    const ls = linksOf(w), vs = videosOf(w), p = ls.length ? platform(ls[0].url) : null;
+    const badge = vs.length ? `<span class="plat">▶ ${vs.length} 部影片</span>` : (p ? `<span class="plat">${p.icon} ${p.name}${ls.length > 1 ? ` <em>+${ls.length - 1}</em>` : ""}</span>` : "");
+    const excerpt = big ? String(w.desc || "").split("\n").map(x => x.trim()).filter(x => x && !/^[-—]$/.test(x) && !/^(擔任職位|合作期間)/.test(x) && !x.includes(w.title) && !String(w.title).includes(x))[0] || "" : "";
+    return `<div class="work-cell${big ? " main" : ""}">
+      <button class="work" type="button" data-work="${i}" aria-label="${editing ? "編輯" : "查看"}作品：${esc(w.title)}">
+        <div class="art">${imgOrArt(w.image, w.art, w.title, "work:" + w.id)}${badge}</div>
+        <div class="meta latin"><span>${esc(catOf(w.cat).name)}</span><span>${esc(w.year)}</span></div>
+        <h3>${esc(w.title)}</h3>
+        ${w.role ? `<span class="sub">${esc(w.role)}</span>` : ""}
+        ${excerpt ? `<p class="excerpt">${esc(excerpt)}</p>` : ""}
+      </button>
+      ${editing ? `<div class="ed-row">
+        <button type="button" class="ed-btn" data-work="${i}">編輯內容／圖片／連結</button>
+      </div>` : ""}
+    </div>`;
+  };
+  $("workList").innerHTML =
+    (main.length ? `<div class="works-main">${main.map(it => card(it, true)).join("")}</div>` : "") +
+    (rest.length || editing ? `${rest.length ? `<div class="works-rest-title latin">More Works</div>` : ""}<div class="works-rest">${rest.map(it => card(it, false)).join("")}${editing ? `<button type="button" class="work-new" id="addWork">＋ 新增作品</button>` : ""}</div>` : "");
+
+  const photoId = safeId(c.photo);
+  $("aboutSide").innerHTML = `
+    ${photoId || editing ? `<div class="sp-wrap"><div class="photo ${photoId ? "" : "art-empty"}">${photoId ? `<div class="adj adj-fill" data-adj-frame="photo">${imgEl(photoId, "個人照片", "photo")}</div>` : "個人照片"}${imgBtns("photo")}</div>${editing && photoId ? posCtrl("photo", false) : ""}</div>` : ""}
+    <div>
+      <div>${T("div", "skillsTitle", "side-label latin")}</div>
+      <div class="skills">${c.skills.map((s, i) => editing
+        ? `<div class="skill-wrap" data-skill="${i}"><button type="button" class="drag-h" data-skill-handle="${i}" aria-label="拖曳調整順序（也可以用左右方向鍵）">⠿</button>${T("span", `skills.${i}.abbr`, "skill", true, `style="color:${safeColor(s.color)}"`)}<input type="color" value="${safeColor(s.color)}" data-input="skills.${i}.color" aria-label="顏色">${delBtn(`skills.${i}`)}</div>`
+        : `<span class="skill" style="color:${safeColor(s.color)}">${esc(s.abbr)}</span>`).join("")}</div>
+      ${addBtn("skills", "新增軟體")}
+    </div>
+    <div>
+      <div>${T("div", "servicesTitle", "side-label latin")}</div>
+      ${editing ? `${T("div", "services")}<div class="side-label" style="font-size:12px;margin-top:6px">用「/」分隔每個項目</div>`
+                : `<div class="services">${String(c.services || "").split("/").map(s => s.trim()).filter(Boolean).map(s => `<span>${esc(s)}</span>`).join("")}</div>`}
+    </div>`;
+
+  $("aboutMain").innerHTML = `
+    <div class="sec-title" style="margin-bottom:28px">${T("span", "aboutEn", "latin")}${T("h2", "aboutTitle")}</div>
+    ${T("p", "bioLead", "bio-lead pre", false)}
+    ${T("p", "bio", "bio pre", false)}
+    <div class="list-title">${T("h3", "jobsTitle")}</div>
+    <div class="rows">${c.jobs.map((j, i) => ({ j, i })).sort((a, b) => byYearAsc(a.j.years, b.j.years) || a.i - b.i).map(({ j, i }) => `
+      <div class="row">${yearCell(`jobs.${i}.years`, "在職中")}
+        <div>${T("h4", `jobs.${i}.title`)}
+          ${editing ? T("div", `jobs.${i}.points`, "pre", false, 'style="color:var(--muted);font-size:14px;margin-top:6px"')
+                    : `<ul>${String(j.points || "").split("\n").filter(s => s.trim()).map(s => `<li>${hlNums(s)}</li>`).join("")}</ul>`}
+          ${(j.highlights || []).length || editing ? `
+            ${(j.highlights || []).length || editing ? T("div", `jobs.${i}.hlTitle`, "hl-title latin") : ""}
+            <div class="hl-grid">${(j.highlights || []).map((h, k) => `
+              <div class="hl">
+                ${T("div", `jobs.${i}.highlights.${k}.num`, "hl-num")}
+                ${T("div", `jobs.${i}.highlights.${k}.label`, "hl-label")}
+                ${h.note || editing ? T("div", `jobs.${i}.highlights.${k}.note`, "hl-note") : ""}
+                ${editRow(`jobs.${i}.highlights.${k}`)}
+              </div>`).join("")}</div>
+            ${addBtn(`jobs.${i}.highlights`, "新增成果數字")}` : ""}
+          ${editRow(`jobs.${i}`)}
+        </div>
+      </div>`).join("")}</div>
+    ${addBtn("jobs", "新增工作經歷")}
+`;
+
+  $("contactWrap").innerHTML = `
+    <div>
+      <div class="sec-title" style="margin-bottom:18px">${T("span", "contactEn", "latin")}</div>
+      ${T("h2", "contactTitle", "pre", false)}
+      ${T("p", "contactText", "contact-text pre", false)}
+    </div>
+    <div>
+      <div class="links">${c.links.map((l, i) => editing
+        ? `<div class="link-edit">${T("b", `links.${i}.label`)}${T("span", `links.${i}.text`)}
+            <input class="url-in" data-input="links.${i}.url" value="${esc(l.url)}" aria-label="連結網址" placeholder="https://… 或 mailto:…">${editRow(`links.${i}`)}</div>`
+        : (() => {
+            let u = String(l.url || "").trim();
+            if (u && !/^[a-z]+:/i.test(u) && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(u)) u = "mailto:" + u;
+            const ok = safeUrl(u) !== "#" && !/^https?:\/\/?$/i.test(u);
+            return ok
+              ? `<a class="link-row" href="${esc(safeUrl(u))}" target="_blank" rel="noopener"><b>${esc(l.label)}</b><span>${esc(l.text)}</span><span class="arr" aria-hidden="true">↗</span></a>`
+              : `<div class="link-row"><b>${esc(l.label)}</b><span>${esc(l.text)}</span><span></span></div>`;
+          })()).join("")}</div>
+      ${addBtn("links", "新增聯絡方式")}
+    </div>`;
+
+  $("footer").innerHTML = T("span", "footerLeft") + T("span", "footerRight");
+
+  document.querySelectorAll("[data-path]").forEach(el => {
+    if (!editing) { el.removeAttribute("contenteditable"); return; }
+    el.contentEditable = "plaintext-only";
+    if (el.contentEditable !== "plaintext-only") el.contentEditable = "true";
+    el.spellcheck = false;
+  });
+  renderEditUi();
+  if (!editing) watchStats();
+}
+
+// ================= 數字動畫：捲到時從 0 跑到目標值 =================
+const played = new Set();
+let statsObs = null;
+function watchStats() {
+  if (!("IntersectionObserver" in window)) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  statsObs?.disconnect();
+  statsObs = new IntersectionObserver(es => {
+    for (const e of es) {
+      if (!e.isIntersecting) continue;
+      statsObs.unobserve(e.target);
+      const key = e.target.dataset.animKey; if (played.has(key)) continue;
+      played.add(key); playStats(e.target);
+    }
+  }, { threshold: 0.35 });
+  document.querySelectorAll(".stats, .hl-grid").forEach((box, k) => {
+    box.dataset.animKey = box.classList.contains("stats") ? "stats" : "hl" + k;
+    if (!played.has(box.dataset.animKey)) statsObs.observe(box);
+  });
+}
+// 經歷內文裡的數字自動加粗上色
+function hlNums(text) {
+  return esc(text).replace(/(約?[+＋]?\d[\d,.]*\s*(?:[–\-~～至]\s*\d[\d,.]*)?\s*(?:%|％|萬|億|倍|人|部|集|位|支|個|次|年|個月)?)/g, '<strong class="num-hl">$1</strong>');
+}
+function playStats(box) {
+  box.querySelectorAll(".stat, .hl").forEach((st, k) => {
+    const el = st.querySelector(".stat-num, .hl-num"); if (!el) return;
+    const raw = el.textContent, m = raw.match(/^(\D*)([\d,]+(?:\.\d+)?)(.*)$/);
+    st.style.setProperty("--d", k * 140 + "ms");
+    st.classList.add("play");
+    if (!m || /\d/.test(m[3])) return;
+    const [, pre, numStr, post] = m, target = parseFloat(numStr.replace(/,/g, ""));
+    const dec = (numStr.split(".")[1] || "").length, comma = numStr.includes(",");
+    const fmt = v => { let t = v.toFixed(dec); if (comma) t = Number(t).toLocaleString("en-US", { minimumFractionDigits: dec }); return pre + t + post; };
+    const dur = 1600, delay = k * 140;
+    el.textContent = fmt(0);
+    let t0 = null;
+    const step = t => {
+      if (t0 === null) t0 = t + delay;
+      const p = Math.min(1, Math.max(0, (t - t0) / dur));
+      const e = 1 - Math.pow(1 - p, 4);
+      el.textContent = p >= 1 ? raw : fmt(target * e);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+}
+
+function renderEditUi() {
+  const ui = $("editUi");
+  if (!canEdit) { ui.innerHTML = ""; return; }
+  if (!editing) { ui.innerHTML = `<button type="button" class="edit-fab" id="startEdit">✎ 編輯網站</button>`; return; }
+  ui.innerHTML = `<div class="edit-bar" role="region" aria-label="編輯工具列">
+    <span class="msg"><b>編輯模式</b>　點虛線框內的文字直接修改${assets ? "" : "（此檢視無法上傳圖片）"}</span>
+    <span class="save-state ${saveState}" id="saveState" role="status" aria-live="polite">${SAVE_TEXT[saveState]}</span>
+    <button type="button" class="primary" id="doneEdit">完成編輯</button>
+  </div>`;
+}
+// ---------- 自動存檔：每次修改後停頓約 1 秒就存 ----------
+const SAVE_TEXT = { idle: "已自動儲存", pending: "編輯中…", saving: "儲存中…", saved: "✓ 已自動儲存", error: "儲存失敗，稍後自動重試" };
+let saveState = "idle", saveTimer = null, saveAgain = false;
+function setSaveState(st) {
+  saveState = st;
+  const el = $("saveState"); if (el) { el.className = "save-state " + st; el.textContent = SAVE_TEXT[st]; }
+}
+function markDirty() {
+  dirty = true; setSaveState("pending");
+  clearTimeout(saveTimer); saveTimer = setTimeout(save, 1000);
+}
+
+// ================= 作品詳情 =================
+function openWork(i) {
+  const w = content.works[i];
+  $("dlgArt").innerHTML = imgOrArt(w.image, w.art, w.title, "work:" + w.id);
+  $("dlgTitle").textContent = w.title;
+  $("dlgDesc").textContent = w.desc || "";
+  $("dlgDescHead").hidden = !w.desc;
+  const vs = videosOf(w);
+  $("dlgVideos").innerHTML = vs.length ? `<div class="dlg-sub latin">Recent Work · 近期作品參考</div>
+    <ol class="video-list">${vs.map((v, k) => {
+      const p = platform(v.url);
+      return `<li><a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">
+        <span class="v-num">${String(k + 1).padStart(2, "0")}</span>
+        <span class="v-title">${esc(v.title || `影片 ${k + 1}`)}</span>
+        <span class="v-plat">${esc(p.icon)} ${esc(p.name)}</span>
+        <span class="v-go" aria-hidden="true">↗</span></a></li>`;
+    }).join("")}</ol>` : "";
+  const ls = linksOf(w);
+  $("dlgLinksWrap").hidden = !ls.length;
+  $("dlgLinks").innerHTML = ls.map(l => {
+    const p = platform(l.url), label = (l.label || "").trim() || `${w.client ? w.client + " · " : ""}${p.name}`;
+    return `<a class="client-link" href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener"><span>${esc(p.icon)}</span>${esc(label)}<em aria-hidden="true">↗</em></a>`;
+  }).join("");
+  $("dlgMeta").innerHTML = [["Category", catOf(w.cat).name], ["Role", w.role], ["Client", w.client], ["Tools", w.tools], ["Year", w.year]]
+    .filter(([, v]) => v).map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
+  $("dlg").showModal();
+}
+
+// ================= 作品編輯 =================
+let weIndex = -1, weImage = null, weArt = null;
+function openWorkEditor(i) {
+  weIndex = i;
+  const w = content.works[i];
+  weImage = w.image; weArt = w.art;
+  $("weCat").innerHTML = content.cats.map(c => `<option value="${esc(c.key)}">${esc(c.name)}</option>`).join("");
+  $("weTitle").value = w.title || ""; $("weCat").value = w.cat; { const ys = String(w.year || "").match(/\d{4}/g) || [];
+    const on = /持續|今|now|在職/i.test(w.year || "");
+    $("weYearFrom").innerHTML = yearOpts(ys[0] || "", false, "", "開始年份");
+    $("weYearTo").innerHTML = yearOpts(on ? "ongoing" : (ys[1] || ""), true, "持續中", "（同一年）"); }
+  $("weRole").value = w.role || ""; $("weClient").value = w.client || ""; $("weTools").value = w.tools || "";
+  $("weDesc").value = w.desc || ""; weLinks = (Array.isArray(w.links) ? w.links : (w.link ? [{ url: w.link }] : [])).map(l => ({ url: l.url || "", label: l.label || "" })); drawWeLinks(); weVideos = (Array.isArray(w.videos) ? w.videos : []).map(v => ({ title: v.title || "", url: v.url || "", views: v.views || "" })); drawWeVideos(); $("weFeature").checked = !!w.feature;
+  $("weUpload").hidden = !assets;
+  resetConfirm($("weDelete"), "刪除這件作品");
+  drawWeArt();
+  $("wEdit").showModal();
+}
+function buildYear() { return joinYears($("weYearFrom").value, $("weYearTo").value, "持續中"); }
+let weVideos = [];
+function drawWeVideos() {
+  while (weVideos.length < 3) weVideos.push({ title: "", url: "", views: "" });
+  $("weVideos").innerHTML = weVideos.map((v, k) => `<div class="we-link we-video">
+    <span class="we-num">${String(k + 1).padStart(2, "0")}</span>
+    <input data-wv="${k}" data-k="title" value="${esc(v.title)}" placeholder="影片標題" aria-label="影片 ${k + 1} 標題">
+    <input type="url" inputmode="url" data-wv="${k}" data-k="url" value="${esc(v.url)}" placeholder="https://…" aria-label="影片 ${k + 1} 網址">
+    <span class="we-plat">${validUrl(v.url) ? esc(platform(v.url).name) : ""}</span>
+    <button type="button" class="ed-btn danger" data-wv-del="${k}" aria-label="移除影片 ${k + 1}">移除</button>
+  </div>`).join("");
+}
+const readWeVideos = () => weVideos.map(v => ({ title: v.title.trim(), url: v.url.trim(), views: String(v.views || "").trim() })).filter(v => v.url);
+// 觀看數格式：120000 → 12 萬；已含單位的文字照原樣顯示
+function fmtViews(v) {
+  v = String(v || "").trim(); if (!v) return "";
+  const n = Number(v.replace(/[,\s]/g, ""));
+  if (!isFinite(n) || !/^[\d,\s.]+$/.test(v)) return v;
+  if (n >= 1e8) return (n / 1e8).toFixed(1).replace(/\.0$/, "") + "億";
+  if (n >= 1e4) return (n / 1e4).toFixed(1).replace(/\.0$/, "") + "萬";
+  return n.toLocaleString("en-US");
+}
+$("weVideos").addEventListener("input", e => {
+  const el = e.target; if (el.dataset.wv == null) return;
+  weVideos[+el.dataset.wv][el.dataset.k] = el.value;
+  if (el.dataset.k === "url") el.parentElement.querySelector(".we-plat").textContent = validUrl(el.value) ? platform(el.value).name : "";
+});
+$("weVideos").addEventListener("click", e => {
+  const b = e.target.closest("[data-wv-del]"); if (!b) return;
+  weVideos.splice(+b.dataset.wvDel, 1); if (weVideos.length < 3) weVideos.push({ title: "", url: "", views: "" }); drawWeVideos();
+});
+$("weAddVideo").onclick = () => { weVideos.push({ title: "", url: "", views: "" }); drawWeVideos(); $("weVideos").lastElementChild.querySelector("input").focus(); };
+let weLinks = [];
+function drawWeLinks() {
+  if (!weLinks.length) weLinks.push({ url: "", label: "" });
+  $("weLinks").innerHTML = weLinks.map((l, k) => `<div class="we-link">
+    <input type="url" inputmode="url" data-wl="${k}" data-k="url" value="${esc(l.url)}" placeholder="https://…" aria-label="連結網址 ${k + 1}">
+    <input data-wl="${k}" data-k="label" value="${esc(l.label)}" placeholder="按鈕文字（可留空）" aria-label="按鈕文字 ${k + 1}">
+    <span class="we-plat">${validUrl(l.url) ? esc(platform(l.url).name) : ""}</span>
+    <button type="button" class="ed-btn danger" data-wl-del="${k}" aria-label="移除連結 ${k + 1}">移除</button>
+  </div>`).join("");
+}
+const readWeLinks = () => weLinks.map(l => ({ url: l.url.trim(), label: l.label.trim() })).filter(l => l.url);
+$("weLinks").addEventListener("input", e => {
+  const el = e.target; if (el.dataset.wl == null) return;
+  weLinks[+el.dataset.wl][el.dataset.k] = el.value;
+  if (el.dataset.k === "url") { const tag = el.parentElement.querySelector(".we-plat"); tag.textContent = validUrl(el.value) ? platform(el.value).name : ""; }
+});
+$("weLinks").addEventListener("click", e => {
+  const b = e.target.closest("[data-wl-del]"); if (!b) return;
+  weLinks.splice(+b.dataset.wlDel, 1); drawWeLinks();
+});
+$("weAddLink").onclick = () => { weLinks.push({ url: "", label: "" }); drawWeLinks(); $("weLinks").lastElementChild.querySelector("input").focus(); };
+function drawWeArt() {
+  const key = "work:" + content.works[weIndex].id, id = safeId(weImage);
+  $("weArt").innerHTML = id ? `<div class="adj adj-fill" data-adj-frame="${esc(key)}">${imgEl(id, "", key)}</div>` : imgOrArt(weImage, weArt, "");
+  $("weCtrl").innerHTML = id ? posCtrl(key, false) : "";
+  $("weRemoveImg").hidden = !(weImage || weArt);
+}
+$("weUpload").onclick = () => $("weFile").click();
+$("weFile").onchange = async e => {
+  const f = e.target.files[0]; e.target.value = ""; if (!f) return;
+  const id = await uploadImage(f, $("weUpload"));
+  if (id) { weImage = id; drawWeArt(); }
+};
+$("weRemoveImg").onclick = () => { weImage = null; weArt = null; drawWeArt(); };
+$("weForm").onsubmit = e => {
+  e.preventDefault();
+  Object.assign(content.works[weIndex], {
+    title: $("weTitle").value.trim(), cat: $("weCat").value, year: buildYear(),
+    role: $("weRole").value.trim(), client: $("weClient").value.trim(), tools: $("weTools").value.trim(),
+    desc: $("weDesc").value.trim(), links: readWeLinks(), videos: readWeVideos(), link: null, feature: $("weFeature").checked,
+    image: weImage, art: weArt
+  });
+  $("wEdit").close(); markDirty(); render();
+};
+$("weDelete").onclick = e => confirmThen(e.currentTarget, () => { content.works.splice(weIndex, 1); $("wEdit").close(); markDirty(); render(); });
+
+function resetConfirm(btn, label) { btn.classList.remove("confirm"); btn.textContent = label; btn.dataset.armed = ""; }
+function confirmThen(btn, fn) {
+  if (btn.dataset.armed) { fn(); return; }
+  const label = btn.textContent;
+  btn.dataset.armed = "1"; btn.classList.add("confirm"); btn.textContent = "再按一次確認刪除";
+  setTimeout(() => btn.isConnected && resetConfirm(btn, label), 3000);
+}
+
+// ================= 圖片上傳 =================
+let imgTarget = null;
+async function uploadImage(file, btn) {
+  if (!assets) { toast("目前無法上傳圖片"); return null; }
+  if (!file.type.startsWith("image/")) { toast("請選擇圖片檔"); return null; }
+  if (file.size > 20 * 1024 * 1024) { toast("圖片需小於 20 MB"); return null; }
+  const old = btn && btn.textContent; if (btn) { btn.disabled = true; btn.textContent = "上傳中…"; }
+  try { const r = await assets.upload(file); return r.id; }
+  catch (err) { toast("上傳失敗，請再試一次"); return null; }
+  finally { if (btn) { btn.disabled = false; btn.textContent = old; } }
+}
+$("imgPicker").onchange = async e => {
+  const f = e.target.files[0]; e.target.value = ""; if (!f || !imgTarget) return;
+  toast("上傳中…");
+  const id = await uploadImage(f, null);
+  if (id) { setPath(content, imgTarget, id); markDirty(); render(); toast("圖片已更新，記得按儲存"); }
+};
+
+// ================= 事件 =================
+document.addEventListener("click", e => {
+  const t = e.target.closest("button, a");
+  if (!t) return;
+  if (t.matches("[data-close]")) { t.closest("dialog").close(); return; }
+  if (t.id === "startEdit") { editing = true; saveState = dirty ? "pending" : "idle"; render(); return; }
+  if (t.id === "doneEdit") { save(); editing = false; render(); toast(dirty ? "正在儲存最後的修改…" : "已儲存"); return; }
+  if (t.id === "addWork") {
+    content.works.push({ id: "w" + Date.now().toString(36), cat: content.cats[0]?.key || "", title: "新作品", year: String(new Date().getFullYear()), role: "", client: "", tools: "", desc: "", links: [], image: null, art: null });
+    markDirty(); render(); openWorkEditor(content.works.length - 1); return;
+  }
+  if (t.dataset.filter) { filter = t.dataset.filter; render(); return; }
+  if (t.dataset.work != null) { const i = +t.dataset.work; editing ? openWorkEditor(i) : openWork(i); return; }
+  if (t.dataset.move != null) {
+    const i = +t.dataset.move, j = i + +t.dataset.dir, ws = content.works;
+    if (j < 0 || j >= ws.length) return;
+    [ws[i], ws[j]] = [ws[j], ws[i]]; markDirty(); render(); return;
+  }
+  if (t.dataset.add) {
+    const list = getPath(content, t.dataset.add) || (setPath(content, t.dataset.add, []), getPath(content, t.dataset.add));
+    const kind = t.dataset.add.split(".").pop();
+    if (kind === "highlights") { const job = getPath(content, t.dataset.add.replace(/\.highlights$/, "")); if (!job.hlTitle) job.hlTitle = "任職期間成果"; }
+    list.push(NEW_ITEM[kind]()); markDirty(); render(); return;
+  }
+  if (t.dataset.del) {
+    confirmThen(t, () => { const p = t.dataset.del.split("."); const idx = +p.pop(); getPath(content, p.join(".")).splice(idx, 1); markDirty(); render(); });
+    return;
+  }
+  if (t.dataset.posReset) { const k = t.dataset.posReset; setPos(k, { x: 50, y: 50, z: 1, f: 18 }); applyPos(k); markDirty(); return; }
+  if (t.dataset.img) { imgTarget = t.dataset.img; $("imgPicker").click(); return; }
+  if (t.dataset.imgClear) { setPath(content, t.dataset.imgClear, null); markDirty(); render(); }
+});
+document.addEventListener("change", e => {
+  const box = e.target.closest?.(".yr-pick"); if (!box || !editing) return;
+  const [a, b] = [...box.querySelectorAll("select")].map(x => x.value);
+  setPath(content, box.dataset.year, joinYears(a, b, box.dataset.ongoing)); markDirty();
+});
+document.addEventListener("input", e => {
+  const el = e.target;
+  if (el.dataset.adj && el.dataset.pos) {
+    const k = el.dataset.adj; setPos(k, { ...getPos(k), [el.dataset.pos]: +el.value }); applyPos(k); markDirty(); return;
+  }
+  if (!editing) return;
+  if (el.dataset.path) { setPath(content, el.dataset.path, el.innerText.replace(/\n+$/, "")); markDirty(); }
+  else if (el.dataset.input) {
+    setPath(content, el.dataset.input, el.value);
+    if (el.type === "color") { const s = el.closest(".skill-wrap")?.querySelector(".skill"); if (s) s.style.color = el.value; }
+    markDirty();
+  }
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter" && e.target.matches?.("[data-single][contenteditable]")) { e.preventDefault(); e.target.blur(); }
+});
+document.addEventListener("paste", e => {
+  const el = e.target.closest?.("[data-path][contenteditable]");
+  if (!el || el.contentEditable === "plaintext-only") return;
+  e.preventDefault();
+  document.execCommand("insertText", false, e.clipboardData.getData("text/plain"));
+});
+// 拖曳照片調整位置
+let drag = null;
+document.addEventListener("pointerdown", e => {
+  const fr = e.target.closest("[data-adj-frame]"); if (!fr || !(editing || fr.closest("#wEdit"))) return;
+  if (!fr.querySelector("img")) return;
+  e.preventDefault(); fr.setPointerCapture(e.pointerId);
+  const key = fr.dataset.adjFrame;
+  drag = { fr, key, x: e.clientX, y: e.clientY, p: getPos(key) };
+  fr.classList.add("dragging");
+});
+document.addEventListener("pointermove", e => {
+  if (!drag) return;
+  const r = drag.fr.getBoundingClientRect(), p = drag.p;
+  const x = Math.min(100, Math.max(0, p.x - (e.clientX - drag.x) / r.width * 100 / p.z * 1.5));
+  const y = Math.min(100, Math.max(0, p.y - (e.clientY - drag.y) / r.height * 100 / p.z * 1.5));
+  setPos(drag.key, { ...p, x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 });
+  applyPos(drag.key);
+});
+const endDrag = () => { if (!drag) return; drag.fr.classList.remove("dragging"); drag = null; markDirty(); };
+document.addEventListener("pointerup", endDrag);
+document.addEventListener("pointercancel", endDrag);
+// ---------- 使用軟體：拖曳排序 ----------
+let skillDrag = null;
+document.addEventListener("pointerdown", e => {
+  const h = editing && e.target.closest("[data-skill-handle]"); if (!h) return;
+  e.preventDefault(); h.setPointerCapture(e.pointerId);
+  const el = h.closest(".skill-wrap");
+  skillDrag = { el, box: el.parentElement }; el.classList.add("lifting");
+});
+document.addEventListener("pointermove", e => {
+  if (!skillDrag) return;
+  const over = document.elementFromPoint(e.clientX, e.clientY)?.closest(".skill-wrap");
+  if (!over || over === skillDrag.el || over.parentElement !== skillDrag.box) return;
+  const r = over.getBoundingClientRect();
+  skillDrag.box.insertBefore(skillDrag.el, e.clientX < r.left + r.width / 2 ? over : over.nextSibling);
+});
+function endSkillDrag() {
+  if (!skillDrag) return;
+  const order = [...skillDrag.box.querySelectorAll(".skill-wrap")].map(n => +n.dataset.skill);
+  skillDrag.el.classList.remove("lifting"); skillDrag = null;
+  if (order.some((v, k) => v !== k)) { const old = content.skills; content.skills = order.map(k => old[k]); markDirty(); }
+  render();
+}
+document.addEventListener("pointerup", endSkillDrag);
+document.addEventListener("pointercancel", endSkillDrag);
+document.addEventListener("keydown", e => {
+  const h = editing && e.target.closest?.("[data-skill-handle]"); if (!h) return;
+  const d = e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : 0;
+  if (!d) return;
+  e.preventDefault();
+  const i = +h.dataset.skillHandle, j = i + d, sk = content.skills;
+  if (j < 0 || j >= sk.length) return;
+  [sk[i], sk[j]] = [sk[j], sk[i]]; markDirty(); render();
+  document.querySelector(`[data-skill-handle="${j}"]`)?.focus();
+});
+for (const d of document.querySelectorAll("dialog")) d.addEventListener("click", e => { if (e.target === d) d.close(); });
+addEventListener("beforeunload", e => { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+// ================= 讀取與儲存 =================
+const DOC = "site/content";
+async function save() {
+  clearTimeout(saveTimer);
+  if (!db) return;
+  if (saving) { saveAgain = true; return; }
+  const snap = clone(content);
+  if (JSON.stringify(snap) === JSON.stringify(saved)) { dirty = false; setSaveState("saved"); return; }
+  saving = true; setSaveState("saving");
+  try {
+    await db.doc(DOC).set(snap);
+    saved = snap; writeCache(saved);
+    dirty = JSON.stringify(content) !== JSON.stringify(saved);
+    setSaveState(dirty ? "pending" : "saved");
+  } catch (err) {
+    setSaveState("error");
+    if (err && err.code === "quota_exceeded") toast("儲存空間已滿，請刪除一些圖片或作品");
+    else saveTimer = setTimeout(save, 5000);
+  } finally {
+    saving = false;
+    if (saveAgain || dirty) { saveAgain = false; if (saveState !== "error") saveTimer = setTimeout(save, 600); }
+  }
+}
+const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej({ code: "timeout" }), ms))]);
+
+// 舊版存檔的欄位轉換
+function migrate(d) {
+  const out = Object.assign(clone(DEFAULT), clone(d));
+  out.name = String(out.name || "").replace(/\s+/g, "") || DEFAULT.name;
+  out.cats = (out.cats || DEFAULT.cats).map(c => ({ key: c.key, name: c.name }));
+  (out.works || []).forEach((w, k) => { if (!w.id) w.id = "w" + k + Date.now().toString(36); });
+  return out;
+}
+
+async function init() {
+  render();
+  if (!window.claude || !claude.use) return;
+  try {
+    db = await claude.use("db");
+    if (db) {
+      const snap = await withTimeout(db.doc(DOC).get(), 10000);
+      if (snap.exists) {
+        const fresh = migrate(snap.data());
+        writeCache(fresh);
+        if (JSON.stringify(fresh) !== JSON.stringify(content)) { content = fresh; saved = clone(content); render(); }
+      }
+    }
+  } catch (err) { /* 讀不到就維持預設內容 */ }
+  try {
+    const user = await claude.use("user");
+    if (db && user) canEdit = !!(await user.canEdit());
+    if (canEdit) assets = await claude.use("assets");
+  } catch (err) { canEdit = false; }
+  render();
+}
+init();
+
+// ================= 封面光暈（冷調藍） =================
+(function () {
+  const c = $("glow"), ctx = c.getContext("2d");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const blobs = [
+    { x: .62, y: .38, r: .5, col: [244, 249, 255], a: 1, sp: .00019, ph: 0 },
+    { x: .98, y: .12, r: .38, col: [236, 244, 252], a: .95, sp: .00023, ph: 2 },
+    { x: .12, y: .05, r: .4, col: [198, 214, 234], a: .8, sp: .00017, ph: 4 },
+    { x: .18, y: 1.05, r: .55, col: [21, 37, 63], a: .95, sp: .00021, ph: 1 },
+    { x: .85, y: 1.1, r: .45, col: [34, 56, 90], a: .85, sp: .00026, ph: 3 }
+  ];
+  let w, h;
+  function size() { const d = Math.min(devicePixelRatio || 1, 1.5); w = c.width = c.offsetWidth * d; h = c.height = c.offsetHeight * d; }
+  function draw(t) {
+    const base = ctx.createLinearGradient(0, 0, 0, h);
+    base.addColorStop(0, "#d4e2f1"); base.addColorStop(.5, "#a0bbdc"); base.addColorStop(1, "#1f3456");
+    ctx.fillStyle = base; ctx.fillRect(0, 0, w, h);
+    const m = Math.max(w, h);
+    for (const b of blobs) {
+      const x = (b.x + Math.sin(t * b.sp + b.ph) * .06) * w;
+      const y = (b.y + Math.cos(t * b.sp * 1.3 + b.ph) * .05) * h;
+      const r = b.r * m;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, `rgba(${b.col},${b.a})`);
+      g.addColorStop(.5, `rgba(${b.col},${b.a * .4})`);
+      g.addColorStop(1, `rgba(${b.col},0)`);
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  size(); addEventListener("resize", () => { size(); if (reduce) draw(0); });
+  reduce ? draw(0) : requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
